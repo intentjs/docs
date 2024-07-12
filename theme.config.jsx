@@ -5,7 +5,6 @@ import { iconMap } from "./src/components/utils/iconmap";
 import Community from "./src/components/Community";
 import Footer from "./src/components/Footer";
 import { Logo } from "./src/components/images/providers";
-import CodeSnippet from "./src/components/utils/CodeSnippet";
 
 const GITHUB_REPO_STAR = <GithubStar />;
 
@@ -59,14 +58,8 @@ export default {
       <span className="text-3xl">Intent</span>
     </div>
   ),
-  // mdxComponet: {
-  //   pre: CodeSnippet,
-  // },
-  // toc: {
-  //   extraContent: <Community />
-  // },
   chat: {
-    link: "https://google.com",
+    link: "https://discord.com/invite/CvCPVYMR",
   },
   project: {
     link: "https://github.com/intentjs/core",
@@ -105,7 +98,7 @@ export default {
     component: <Footer />,
   },
   editLink: {
-    component: (props) => <Community {...props}/>,
+    component: (props) => <Community {...props} />,
   },
   navigation: {
     prev: true,

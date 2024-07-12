@@ -7,50 +7,65 @@ import { PiNote } from "react-icons/pi";
 import { PiArrowUpRightBold } from "react-icons/pi";
 import { Enterprise } from "../components/images/providers";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const CommunityData = [
   {
     Icon: PiPencilSimpleLineLight,
     title: "Edit this page",
     ArrowIcon: PiArrowUpRightBold,
+    link: "https://github.com/intentjs/docs",
   },
   {
     Icon: PiShootingStar,
     title: "Star on GuitHub",
     ArrowIcon: PiArrowUpRightBold,
+    link: "https://github.com/intentjs/core",
   },
   {
     Icon: MdOutlineMessage,
     title: "Chat on Discord",
     ArrowIcon: PiArrowUpRightBold,
+    link: "https://discord.com/invite/CvCPVYMR",
   },
   {
     Icon: PiHandHeart,
     title: "Become a Sponsor",
     ArrowIcon: PiArrowUpRightBold,
+    link: "",
   },
   {
     Icon: PiNote,
     title: "Give us Feedback",
     ArrowIcon: PiArrowUpRightBold,
+    link: "https://github.com/intentjs/docs/issues/new?title=https://tryintent.com/docs",
   },
 ];
 
 const Community = (props) => {
-  console.log(props)
+  const { asPath } = useRouter();
   return (
     <div>
       <p className="nx-mb-3.5 nx-font-semibold nx-tracking-tight">Community</p>
       <ul>
         {CommunityData.map((item, index) => (
           <li className="nx-my-2 nx-scroll-my-6 nx-scroll-py-6" key={index}>
-            <a className="nx-font-semibold nx-inline-block nx-text-gray-500 hover:nx-text-gray-900 dark:nx-text-gray-400 dark:hover:nx-text-gray-300 contrast-more:nx-text-gray-900 contrast-more:nx-underline contrast-more:dark:nx-text-gray-50 nx-w-full nx-break-words">
+            <Link
+              className="nx-font-semibold nx-inline-block nx-text-gray-500 hover:nx-text-gray-900 dark:nx-text-gray-400 dark:hover:nx-text-gray-300 contrast-more:nx-text-gray-900 contrast-more:nx-underline contrast-more:dark:nx-text-gray-50 nx-w-full nx-break-words"
+              href={
+                (index === 0 && `${item.link}/${props.filePath}`) ||
+                (index === CommunityData.length - 1 &&
+                  `${item.link}${asPath}`) ||
+                item.link
+              }
+              target="_blank"
+            >
               <span className="flex flex-row items-center gap-2 cursor-pointer">
                 <item.Icon />
                 {item.title}
                 <item.ArrowIcon />
               </span>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

@@ -16,9 +16,9 @@ module.exports = withNextra({
       },
     ];
   },
-  mdxOptions: {
-    rehypePrettyCodeOptions: {
-      theme: JSON.parse(readFileSync("./custom-theme.json", "utf8")),
-    },
-  },
+  // mdxOptions: {
+  //   rehypePrettyCodeOptions: {
+  //     theme: JSON.parse(readFileSync("./custom-theme.json", "utf8")),
+  //   },
+  // },
 });

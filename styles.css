@@ -1,7 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-pre {
-  background-color: #1d2429 !important;
+body {
+  font-family: "Urbanist", sans-serif;
 }
