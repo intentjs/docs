@@ -154,7 +154,7 @@ EmitUnless(
 
 ## Queuable Events
 
-If your listeners are going to perform slow tasks like sending notifications, emails or making an HTTP request, Queueable Events can be beneficial for you. Events internally make use of the Intent [Queue](/docs/queues) to do so.
+If your listeners are going to perform slow tasks like sending notifications, emails or making an HTTP request, Queueable Events can be beneficial for you. Events internally make use of the Intent [Queue](./queues.md) to do so.
 
 Making an events queueable means it will be processed automatically via the configured queue. To make an event to go through queue, you will need to implement `QueueableEvent` interface and implement the `shouldBeQueued` method. 
 

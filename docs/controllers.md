@@ -142,7 +142,7 @@ export class UserController {
 If you are building an endpoint, you will need to access the request object which let's you get the details from the request.
 To do so, you can make use of the `@Req` decorator and `Request` class from `@intentjs/core` package.
 
-Intent comes with it's own `Request` utility which is more powerful than those available, you can read more about the `Request` objects [here](/docs/requests).
+Intent comes with it's own `Request` utility which is more powerful than those available, you can read more about the `Request` objects [here](./requests.md).
 
 For example, let's say you want to build an endpoint which creates customer. For this, you will need to create a `POST` handler.
 
@@ -161,7 +161,7 @@ export class UserController {
 }
 ```
 
-There are multiple approaches to using `Requests` inside Intent. You can read about them in detail [here](/docs/requests).
+There are multiple approaches to using `Requests` inside Intent. You can read about them in detail [here](./requests.md).
 
 ## Route Wildcards
 
