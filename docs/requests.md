@@ -1,15 +1,13 @@
 ---
 title: Requests
-description:
+description: Using Requests inside IntentJS Controllers
 image:
 ---
 # Requests
 
 IntentJS provides a useful `Request` class over express' Request object. It automatically parses the incoming data, headers, and comes packed with many utilities.
 
-## Interacting With The Request
-
-### Using the Request
+## Using the Request
 
 To get the `Request` object, you will need to type-hint the `Request` class from `@intentjs/core`. The incoming request will automatically be injected into the controller's method.
 
@@ -19,13 +17,197 @@ import { Req, Request, Controller } from "@intentjs/core";
 @Controller()
 export class BookController {
   async create(@Req() req: Request) {
-    const name = req.input("name");
+    const payload = req.all();
+    const name = payload.name
     return { msg: "Book Created Successfully!" };
   }
 }
 ```
 
+In the next section, you will see how can access the data we receive inside the request object using the `Route Param Decorators`
+
+## Route Param Decorators
+
+The request object represents the HTTP Request and has properties of the query string, paramters, HTTP headers, etc. To access these data inside your route handler, you can use the dedicated decorators, such as `@Body()` or `@Query()`. Below is the complete list of decorators and their descriptions available.
+
+| Decorator | Description |
+|---|---|
+| `@Req()` | The Raw HTTP Request Object |
+| `@Res()` | The Raw HTTP Response Object, read more about it [here](./response.md) |
+| `@Dto()` | Injects the instance of the class against which you do the typing |
+| `@Query(key?: string)` | Injects the value of the key present in the query param, if no key is passed, injects an object. |
+| `@Param(key?: string)` | Injects the value of the key present in the path param, if no key is passed, an object is injected. |
+| `@Body(key?: string)` | Injects the value of the key present in the body, if no key is passed, an object is injected. |
+| `@Header(key? :string)` | Injects the value of the header key passed, if no key is present, all headers are injected. |
+| `@IP()` | Injects the IP of the client |
+| `@UserAgent()` | Injects the user agent of the client |
+| `@Host()` | Injects the `hostname` of the client |
+| `@Accepts()` | Injects the `accept` header of the request |
+| `@BufferBody()` | Injects the payload as a buffer |
+
+Let's see how we can use these decorators.
+
+### Request
+
+To inject a Raw HTTP request object inside your route handler, you can make use of the `@Req()` decorator.
+
+```ts
+@Get('')
+async get(@Req() req: Request) {
+  console.log(req)
+}
+```
+
+### DTOs
+
+To enable strict typing inside your request payloads, you can make use of the `@Dto()` decorator. Intent internally uses `class-transformer` to convert the request payload into a strongly typed class instances.
+
+::: code-group
+
+```ts [request-dto.ts]
+export class LoginDto {
+  email: string;
+
+  password: string;
+}
+```
+
+```ts [auth-controller.ts]
+@Post('login')
+async get(@Dto() dto: LoginDto) {
+  console.log(dto);
+}
+```
+:::
+
+### Query Params
+To inject values received from query string inside your route handler, you can make use of the `@Query` decorator.
+
+```ts
+@Post('login')
+async get(@Query('page') page: number) {
+  console.log(page);
+}
+
+@Post('register')
+async get(@Query() queryParams: Record<string, any>) {
+  console.log(queryParams); // injects the complete query params object
+}
+```
+
+### Path Params
+To inject values received from path parameters inside your route handler, you can make use of the `@Param` decorator.
+
+```ts
+@Get('users/:id')
+async get(@Param('id') id: string) {
+  console.log(id);
+}
+
+@Get('users/:id/:key')
+async get(@Param() params: Record<string, any>) {
+  console.log(params); // injects the complete path params object
+}
+```
+
+### Body
+To inject the values received from path parameters inside your route handler, you can make use of the `@Body` decorator.
+
+```ts
+@Post('login')
+async get(@Body('email') email: string) {
+  console.log(email)
+}
+
+@Post('register')
+async get(@Body() payload: Record<string, any>) {
+  console.log(payload); // injects the complete body object
+}
+```
+
+### Headers
+To inject the headers inside your route handler
+
+
+```ts
+@Post('register')
+async get(@Header() headers: Record<string, any>) {
+  console.log(headers); // injects the complete headers object
+}
+```
+
+### IP Address
+
+To inject the IP of the client, you can use the `@IP` decorator.
+
+```ts
+@Post('register')
+async get(@IP() ip: string) {
+  console.log(ip);
+}
+```
+
+### User Agent
+
+To inject the user agent of the client
+
+```ts
+@Post('register')
+async get(@UserAgent() agent: string) {
+  console.log(agent);
+}
+```
+
+### Host
+
+To inject the `req.hostname` you can use the `@Host` decorator.
+
+```ts
+@Post('register')
+async get(@Host() host: string) {
+  console.log(host);
+}
+```
+
+### Accepts Header
+
+To inject the `accepts` header you can use the `@Accepts` decorator.
+
+```ts
+@Post('register')
+async get(@Accepts() accepts: string) {
+  console.log(accepts);
+}
+```
+
+### Buffer Body
+There could be situations where you will need the raw payload of the request for example to calculate `x-signature`. If you would like to get all of the body as a buffer, you can use the `BufferBody` decorator.
+
+```ts
+@Post('register')
+async get(@BufferBody() bufferBody: Buffer) {
+  console.log(bufferBody);
+}
+```
+
+### Custom Decorator
+If you would like to make your own route param decorator, you could do so easily by making use of the `createParamDecorator` function.
+
+```ts [app/http/decorators.ts]
+import { createParamDecorator, ExecutionContext } from '@intentjs/core';
+
+export const CustomParam = createParamDecorator(
+  (data: any, ctx: ExecutionContext, argIndex: number) => {
+    return 'data from custom decorator param';
+  },
+);
+```
+
 ## Request Inputs, Host, Path and Methods
+
+:::info
+If you are more used to the approach of accessing the `Request` instance inside your route handler, IntentJS provides some helpful methods to perform the same operations that you could do by just using the dedicated decorators we discussed above.
+:::
 
 The `Request` instance comes packed with variety of methods.
 
@@ -166,13 +348,3 @@ To get all acceptable content types you can use `getAcceptableContentTypes` meth
 ```typescript
 const contentTypes = req.getAcceptableContentTypes();
 ```
-
-To check if a request accepts certain type of content type, you can make use of `accepts` method.
-
-```typescript
-if (req.accepts("application/xml", "application/json")) {
-  // ...
-}
-```
-
-It would return true if any of the content type is acceptable. Otherwise, it will return false.

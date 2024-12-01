@@ -61,9 +61,9 @@ import { Injectable, Command, ConsoleIO } from "@intentjs/core";
 
 @Injectable()
 export class HelloWorldCommand {
-  @Command("hello {name=world}", { desc: "Test Command" })
+  @Command("hello", { desc: "Test Command" })
   sayHello(_cli: ConsoleIO) {
-    const name = _cli.argument<string>("name");
+    const name = _cli.ask<string>("name");
     _cli.info(`Hello ${name}!`);
     return;
   }
@@ -80,16 +80,10 @@ import { HelloWorldCommand } from "./commands";
 export class AppModule {}
 ```
 
-Now, run the `build` command to transpile the project.
+Now we can run the command by running the `node intent your_command_name` inside your terminal.
 
 ```bash
-npm run build
-```
-
-Once the build is done, we can now run the command we created earlier.
-
-```bash
-node intent hello intent
+node intent hello
 ```
 
 ## Defining Input
