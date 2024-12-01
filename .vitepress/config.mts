@@ -43,7 +43,7 @@ export default defineConfig({
       { text: "Docs", link: "/installation" },
     ],
     editLink: {
-      pattern: "https://github.com/intentjs/docs/edit/main/docs/:path",
+      pattern: "https://github.com/intentjs/docs-v2/edit/main/docs/:path",
       text: "Edit this page on GitHub",
     },
 
