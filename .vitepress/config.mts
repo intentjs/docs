@@ -19,7 +19,7 @@ export default defineConfig({
       return url.toLowerCase().includes("ignore");
     },
   ],
-  base: "/docs",
+  base: "/docs/",
   srcDir: "./docs",
   outDir: "./dist",
   cleanUrls: true,
