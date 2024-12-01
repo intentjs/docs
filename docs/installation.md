@@ -16,8 +16,7 @@ where you want to integrate something like AWS S3, Message Queues, Redis, etc.
 
 Intent is trying to solve exactly that, you get a sweet, elegant and well-structured framework to quickly build and ship your project while we sweat out the details.
 
-Intent comes packed with tons of features like Database integration, Storages, Message Queues, Loggers, Mailers, Caching, Localization, etc. We internally use NestJS dependency injection and Http Server, on top of this
-we also try to simplify things for you.  While Intent tries it's best to respect NestJS design principles in the best way possible, but sometimes it can be difficult. So, by default Intent follows the way which ensures maximum value for the community
+Intent comes packed with tons of features like Database integration, Storages, Message Queues, Loggers, Mailers, Caching, Localization, etc. We internally use NestJS dependency injection, on top of this we also try to simplify things for you.  While Intent tries it's best to respect NestJS design principles in the best way possible, but sometimes it can be difficult. So, by default Intent follows the way which ensures maximum value for the community
 
 Intent aims to provide a good developer experience while still ensuring that it is performant and scalable.
 
