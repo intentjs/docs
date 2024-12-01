@@ -14,8 +14,10 @@ To get the `Request` object, you will need to type-hint the `Request` class from
 ```ts
 import { Req, Request, Controller } from "@intentjs/core";
 
-@Controller()
+@Controller('books')
 export class BookController {
+
+  @Post('')
   async create(@Req() req: Request) {
     const payload = req.all();
     const name = payload.name

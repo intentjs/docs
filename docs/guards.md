@@ -7,7 +7,7 @@ image:
 
 Guards are single responsibility classes that run before each request and determine whethere the request should be handled or not (like permissions, roles, ACLs, etc.).
 Unlike Middlewares, Guards are contextful in nature which means in guards which controller class and method will be called. 
-They have access to the instance of [`Reflector`](/reflectors) which lets you access the metadata and perform logic in your guard accordingly.
+They have access to the instance of [`Reflector`](./reflectors.md) which lets you access the metadata and perform logic in your guard accordingly.
 
 :::info
 Guards are executed after all middlewares.
@@ -141,6 +141,7 @@ import { HasRoles } from '../decorators';
 export class RoleGuard extends IntentGuard {
   async guard(ctx: ExecutionContext): Promise<boolean> {
     const reflector = ctx.getReflector(); // returns an instance of the Reflector class.
+    const req = ctx.getRequest();
 
     /** If you are setting the metadata on a method, then you can use the `getFromMethod` method. */
     const requiredRoles = reflector.getFromClass(HasRoles); // returns ['admin']
