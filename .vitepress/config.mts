@@ -24,9 +24,10 @@ export default defineConfig({
       { text: "Docs", link: "/docs/installation" },
     ],
     editLink: {
-      pattern: "https://github.com/vuejs/vitepress/edit/main/docs/:path",
+      pattern: "https://github.com/intentjs/docs/edit/main/docs/:path",
       text: "Edit this page on GitHub",
     },
+
     lastUpdated: {
       text: "Updated at",
       formatOptions: {
@@ -62,6 +63,7 @@ export default defineConfig({
           { text: "Controllers", link: "/docs/controllers" },
           { text: "Requests", link: "/docs/requests" },
           { text: "Response", link: "/docs/response" },
+          { text: "Execution Context", link: "/docs/execution-context" },
           { text: "Services", link: "/docs/services" },
           { text: "Middlewares", link: "/docs/middlewares" },
           { text: "Guards", link: "/docs/guards" },
