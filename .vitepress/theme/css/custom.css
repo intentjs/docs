@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --vp-c-primary: #99e600;
+    --vp-c-primary-light: #99e600;
+    --vp-c-primary-lighter: #99e600;
+    --vp-c-primary-dark: #99e600;
+    --vp-c-primary-darker: #99e600;
+
+    --vp-c-brand-1: #99e600;
+    --vp-c-brand-2: #747bff;
+
+}
+
+:root {
+  }

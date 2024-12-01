@@ -4,18 +4,15 @@ layout: home
 
 hero:
   name: "IntentJS"
-  text: "ddfwef"
+  text: "Insipired by Laravel"
   tagline: "A refreshing take on traditional nodejs frameworks, change the way you build your products. Intent is an open-source framework with focus on productivity and developer experience."
   image:
     src: /logo.png
     alt: VitePress
   actions:
-    - theme: theme
-      text: Get Started
-      link: /docs
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Docs
+      link: /docs/installation
     - theme: alt
       text: API Examples
       link: /api-examples

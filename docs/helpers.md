@@ -4,13 +4,15 @@ description:
 image:
 ---
 
-import { ListComponent } from "../src/components/list";
-import {
+<script setup>
+  import {
   ArrayHelpersList,
   NumberHelpersList,
   ObjectHelpersList,
   StringHelpersList,
-} from "../src/components/utils/helpers";
+} from "../utils/helpers";
+// import HelpersList from '../components/HelpersList';
+</script>
 
 # Helpers
 
@@ -27,19 +29,19 @@ IntentJS provides the following helpers
 
 ### Arrays
 
-<ListComponent items={ArrayHelpersList} />
+<HelpersList :items="ArrayHelpersList" />
 
 ### Objects
 
-<ListComponent items={ObjectHelpersList} />
+<HelpersList :items="ObjectHelpersList" />
 
 ### Numbers
 
-<ListComponent items={NumberHelpersList} />
+<HelpersList :items="NumberHelpersList" />
 
 ### Strings
 
-<ListComponent items={StringHelpersList} />
+<HelpersList :items="StringHelpersList" />
 
 ## Array Helper Methods
 

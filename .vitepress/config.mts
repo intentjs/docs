@@ -21,7 +21,7 @@ export default defineConfig({
     },
     nav: [
       { text: "Home", link: "/" },
-      { text: "Examples", link: "/markdown-examples" },
+      { text: "Docs", link: "/docs/installation" },
     ],
     editLink: {
       pattern: "https://github.com/vuejs/vitepress/edit/main/docs/:path",
@@ -60,10 +60,11 @@ export default defineConfig({
         text: "Basics",
         items: [
           { text: "Controllers", link: "/docs/controllers" },
+          { text: "Requests", link: "/docs/requests" },
+          { text: "Response", link: "/docs/response" },
           { text: "Services", link: "/docs/services" },
           { text: "Middlewares", link: "/docs/middlewares" },
           { text: "Guards", link: "/docs/guards" },
-          { text: "Requests", link: "/docs/requests" },
           { text: "Transformers", link: "/docs/transformers" },
           { text: "Validation", link: "/docs/validation" },
           { text: "Error Handling", link: "/docs/error-handling" },

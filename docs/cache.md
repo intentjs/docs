@@ -3,14 +3,6 @@ title: Cache
 description:
 image:
 ---
-
-import Image from "next/image";
-import { Cards, Card } from "nextra/components";
-import {
-  RedisLogo,
-  InMemoryCacheLogo,
-} from "../src/components/images/providers";
-
 # Cache
 
 In some cases, applications may perform resource-intensive operations, such as complex computations or retrieving large amounts of data. These tasks can be time-consuming and put a strain on the CPU. Additionally, if the data doesn't change frequently, it's often beneficial to store it in a cache. This approach allows the application to quickly access the information from the cache instead of making repeated network calls, which can improve performance and reduce system load.
@@ -18,15 +10,6 @@ In some cases, applications may perform resource-intensive operations, such as c
 In those cases, you may want to save it in a fast-read store so that you don't need to run the computation again and again. When the data is cached, it can be retrieved quickly on subsequent requests for the same data.
 
 Intent provides a multi-store cache provider for your applications. We support the following caches.
-
-<Cards>
-  <Card icon={<RedisLogo />} title="Redis" href=""/>
-  <Card
-    icon={<InMemoryCacheLogo />}
-    title="In-Memory"
-    href=""
-  />
-</Cards>
 
 ## Configuration
 
