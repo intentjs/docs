@@ -5,7 +5,18 @@ image:
 ---
 # Requests
 
-IntentJS provides a useful `Request` class over express' Request object. It automatically parses the incoming data, headers, and comes packed with many utilities.
+IntentJS provides a useful `Request` class. It automatically parses the incoming data, headers, and comes packed with many utilities.
+
+Out of the box Intent supports following `Content-Type`.
+
+- `application/json`
+- `text/plain`
+- `application/x-www-form-urlencoded`
+- `multipart/form-data`
+- `text/html`
+- `application/xml`
+- `buffer`
+- `binary`
 
 ## Using the Request
 
@@ -238,6 +249,10 @@ The objects are spread in the order of `path`, `query` and `body`. So all the ke
 ```ts
 const inputs = req.all();
 ```
+
+:::warning
+`req.all()` method only works when the `Content-Type` is `application/json`, `application/x-www-form-urlencoded`, `multipart/form-data`.
+:::
 
 If you want to fetch a value as a string, you can use `string` method
 

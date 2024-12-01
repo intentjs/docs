@@ -24,17 +24,33 @@ To create a middleware, you can run the `node intent make:middleware ApiKeyMiddl
 called `ApiKeyMiddleware` inside `app/http/middlewares` directory. When you open it, you would see something like below
 
 ```ts
-import { IntentMiddleware, Request, Response } from '@intentjs/core';
-import { NextFunction } from 'express';
+import { IntentMiddleware, Request, Response, MiddlewareNext } from '@intentjs/core';
 
 export class ApiKeyMiddleware extends IntentMiddleware {
-  async boot(req: Request, res: Response, next: NextFunction): Promise<void> {
+  use(req: Request, res: Response, next: MiddlewareNext): void {
+    const payload = req.all();
+    // your code here.
     next();
   }
 }
 ```
 
-We will write our logic inside the `boot` method, which will run whenever there is any request coming in.
+By default nature of the middleware is supposed to be synchronous, but if would like to make an asynchronous middleware then you don't need to call the `next` method.
+
+```ts
+import { IntentMiddleware, Request, Response, MiddlewareNext } from '@intentjs/core';
+
+export class ApiKeyMiddleware extends IntentMiddleware {
+  async use(req: Request, res: Response, next: MiddlewareNext): Promise<void> {
+    new Promise((resolve, reject) => {
+      // your code here
+      resolve(1);
+    })
+  }
+}
+```
+
+We will write our logic inside the `use` method, which will run whenever there is any request coming in.
 
 Middlewares are fully compatible with our application containers and service providers, which means you can inject some dependencies inside the `ApiKeyMiddleware` like below.
 
@@ -46,7 +62,7 @@ import { NextFunction } from 'express';
 export class ApiKeyMiddleware extends IntentMiddleware {
   constructor(private service: UserService) {}
 
-  async boot(req: Request, res: Response, next: NextFunction): Promise<void> {
+  async use(req: Request, res: Response, next: NextFunction): Promise<void> {
     next();
   }
 }
@@ -55,7 +71,7 @@ export class ApiKeyMiddleware extends IntentMiddleware {
 Let's say you want to throw some error from the middleware itself, you can throw an `HttpException` error. This would automatically get captured by our error filter.
 
 ```ts
-async boot(req: Request, res: Response, next: NextFunction): Promise<void> {
+async use(req: Request, res: Response, next: NextFunction): Promise<void> {
   const isApiKeyMatching = false; // add your logic here.
   if (!isApiKeyMatching) {
     throw new HttpException('API Keys mismatch. Please double check once!');
@@ -63,6 +79,8 @@ async boot(req: Request, res: Response, next: NextFunction): Promise<void> {
   next();
 }
 ```
+
+## Applying Middlewares
 
 Now, after you are done with creating the middleware, you will now need to start using it. Intent supports following type of applications for the middlewares,
 
@@ -90,12 +108,11 @@ export class HttpKernel extends Kernel {
 }
 ```
 
-What if you don't want to apply a middleware globally, and instead just apply it on certain routes. For this, you can simply use the `routeMiddlewares` available inside
-the `Kernel` class.
+What if you don't want to apply a middleware globally, and instead just apply it on certain routes. For this, you can simply use the `routeMiddlewares` available inside the `Kernel` class.
 
-```ts
+```ts [app/http/kernel.ts]
 import { Kernel, IntentMiddleware, Type, MiddlewareConfigurator } from '@intentjs/core';
-import { ApiKeyMiddleware } from './Middlewares/api-key';
+import { ApiKeyMiddleware } from './middlewares/api-key';
 
 export class HttpKernel extends Kernel {
   /**
