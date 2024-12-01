@@ -17,9 +17,9 @@ It comes with a pre-built email template which you can use to make your template
 The configuration for mailer is available at `config/mailer.ts`. Before using it, you will need to configure it. Below example shows how to configure a `smtp` provider for sending out email.
 
 ```ts copy
-import { MailerOptions, IntentMail, registerAs } from '@intentjs/core';
+import { MailerOptions, IntentMail, configNamespace } from '@intentjs/core';
 
-export default registerAs(
+export default configNamespace(
   'mailers',
   () =>
     ({

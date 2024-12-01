@@ -20,9 +20,9 @@ Cache configuration is defined in `config/cache.ts` file. By default, Intent com
 Local cache is a zero-dependency store that you can use without starting any extra server.
 
 ```ts
-import { CacheOptions, registerAs } from "@intentjs/core";
+import { CacheOptions, configNamespace } from "@intentjs/core";
 
-export default registerAs(
+export default configNamespace(
   "cache",
   () =>
     ({
@@ -44,9 +44,9 @@ For production related workloads, we recommend using an external cache store lik
 If you would like to configure different cache stores, you can do so like below in `config/cache.ts` file:
 
 ```typescript
-import { CacheOptions, registerAs } from "@intentjs/core";
+import { CacheOptions, configNamespace } from "@intentjs/core";
 
-export default registerAs(
+export default configNamespace(
   "cache",
   () =>
     ({

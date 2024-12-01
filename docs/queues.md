@@ -19,9 +19,9 @@ Intent provides powerful and consistent set of APIs for interacting with frequen
 All of the queue configurations are stored in the `config/queue.ts` file. By default, `sync` queue is configured. The configuration will be similar to below:
 
 ```ts filename="config/queue.ts"
-import { SyncQueueDriver, QueueOptions, registerAs } from "@intentjs/core";
+import { SyncQueueDriver, QueueOptions, configNamespace } from "@intentjs/core";
 
-export default registerAs("queue", () => {
+export default configNamespace("queue", () => {
   return {
     default: "notifications",
     connections: {
@@ -37,9 +37,9 @@ export default registerAs("queue", () => {
 Let's say you want to use `AWS SQS` as your message queue, you can use the below mentioned configuration
 
 ```ts filename="config/queue.ts"
-import { SyncQueueDriver, QueueOptions, registerAs } from "@intentjs/core";
+import { SyncQueueDriver, QueueOptions, configNamespace } from "@intentjs/core";
 
-export default registerAs("queue", () => {
+export default configNamespace("queue", () => {
   return {
     default: "notifications",
     connections: {
@@ -370,9 +370,9 @@ npm i @aws-sdk/client-sqs @aws-sdk/credential-providers
 Before using it, you need to configure it first like below:
 
 ```typescript
-import { QueueOptions, SqsDriver, registerAs } from "@intentjs/core";
+import { QueueOptions, SqsDriver, configNamespace } from "@intentjs/core";
 
-export default registerAs("queue", () => {
+export default configNamespace("queue", () => {
   return {
     default: "notifications",
     connections: {
@@ -416,9 +416,9 @@ npm i ioredis --save
 Before using it, you need to configure it first like below:
 
 ```typescript
-import { QueueOptions, RedisDriver, registerAs } from "@intentjs/core";
+import { QueueOptions, RedisDriver, configNamespace } from "@intentjs/core";
 
-export default registerAs("queue", () => {
+export default configNamespace("queue", () => {
   return {
     default: "notifications",
     connections: {
@@ -458,9 +458,9 @@ Intent internally uses the same database connection that is used, so we don't ne
 To use database as a message queue, you can simply do
 
 ```ts
-import { QueueOptions, RedisDriver, registerAs } from "@intentjs/core";
+import { QueueOptions, RedisDriver, configNamespace } from "@intentjs/core";
 
-export default registerAs("queue", () => {
+export default configNamespace("queue", () => {
   return {
     default: "notifications",
     connections: {

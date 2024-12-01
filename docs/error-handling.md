@@ -16,9 +16,9 @@ Your application comes with out-of-the-box `Sentry` integration, making it easie
 You can configure your exception filter by changing settings inside the `config/app.ts` file. It comes with a few default configuration which provides elegant error handlings in your application.
 
 ```ts
-import { registerAs, toBoolean, AppConfig, ValidationErrorSerializer } from '@intentjs/core';
+import { configNamespace, toBoolean, AppConfig, ValidationErrorSerializer } from '@intentjs/core';
 
-export default registerAs(
+export default configNamespace(
   'app',
   () =>
     ({

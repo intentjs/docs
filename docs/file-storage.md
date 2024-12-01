@@ -18,9 +18,9 @@ Below we have explained the different `disk` configurations available which you 
 
 ```ts filename="config/filesystem.ts"
 import { fromIni } from '@aws-sdk/credential-providers';
-import { StorageOption, registerAs } from '@intentjs/core';
+import { StorageOption, configNamespace } from '@intentjs/core';
 
-export default registerAs(
+export default configNamespace(
   'filesystem',
   () =>
     ({
@@ -93,9 +93,9 @@ While drivers help you to differentiate between the different storage provides f
 For example: While building an e-commerce application, you may want to handle the uploaded `invoices` and `products` differently. With the helps of different disks configuration, we can easily implement it.
 
 ```typescript
-import { registerAs } from "@intentjs/core";
+import { configNamespace } from "@intentjs/core";
 
-export default registerAs("filesystem", () => ({
+export default configNamespace("filesystem", () => ({
   default: "docs",
   disks: {
     invoices: { // `invoices` disk, will contain the invoices of all the orders passed so far

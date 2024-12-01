@@ -22,15 +22,11 @@ Since Guards can only be used during an HTTP request lifecycle, they are stored 
 Let's create our first guard, `role-guard.ts`.
 
 ```ts
-import { Injectable, IntentGuard, Request, Response, Reflector } from '@intentjs/core';
+import { Injectable, IntentGuard, ExecutionContext } from '@intentjs/core';
 
 @Injectable()
 export class RoleGuard extends IntentGuard {
-  async guard(
-    req: Request,
-    res: Response,
-    reflector: Reflector,
-  ): Promise<boolean> {
+  async guard(ctx: ExecutionContext): Promise<boolean> {
     const userHasNecessaryRoles = true; // change this to your own custom logic.
 
     if (userHasNecessaryRoles) {
@@ -45,27 +41,18 @@ export class RoleGuard extends IntentGuard {
 When you crearte a new guard, you extend the `IntentGuard` class and implement the method `guard`. Whenever a new request comes in, the `guard` method runs
 and depending on it's return value (`true` or `false`), it passes or fails the guard respectively.
 
-Inside the `guard` method, you get access to 3 arguments:
+Inside the `guard` method, you get access to only 1 arguments, ie `ExecutionContext`, you can read more about it [here](./execution-context.md).
 
-1. `Request` - the express request object, read more about it [here](/requests)
-2. `Response` - the express response object
-3. `Reflector` - the Reflector class, read more about it [here](/reflectors)
-
-The `guard` method needs to return `true` or `false` as return values, where `true` means it's a pass and `false` means it's a fail. When a guard fails,
-it throws a `403` error code.
+The `guard` method needs to return `true` or `false` as return values, where `true` means it's a pass and `false` means it's a fail. When a guard fails, it throws a `403` error code.
 
 You can also throw errors directly from your guard. All of the exceptions thrown from the guards are captured inside the [Exception Filters](/error-handling).
 
 ```ts
-import { Injectable, IntentGuard, Request, Response, Reflector } from '@intentjs/core';
+import { Injectable, IntentGuard, ExecutionContext } from '@intentjs/core';
 
 @Injectable()
 export class RoleGuard extends IntentGuard {
-  async guard(
-    req: Request,
-    res: Response,
-    reflector: Reflector,
-  ): Promise<boolean> {
+  async guard(ctx: ExecutionContext): Promise<boolean> {
     const userHasNecessaryRoles = true; // change this to your own custom logic.
 
     if (!userHasNecessaryRoles) {
@@ -97,8 +84,7 @@ export class UserController {
 }
 ```
 
-With the help of the `UseGuards` decorator, we bind the `RoleGuard` to the `UserController`, this will ensure that our guard runs everytime whenever there is a new request on 
-`/users` route. The controller will only be executed if the guard have successfully passed.
+With the help of the `UseGuards` decorator, we bind the `RoleGuard` to the `UserController`, this will ensure that our guard runs everytime whenever there is a new request on `/users` route. The controller will only be executed if the guard have successfully passed.
 
 ## Using Reflector
 As we discussed earlier that the Guards are contextful, in this section we will see how we can retrieve context and metadata inside our guard.
@@ -148,16 +134,14 @@ async create() {
 Now after setting the metadata, we will now need to read the value from `HasRoles` decorator inside our `RoleGuard`.
 
 ```ts
-import { Injectable, IntentGuard, Request, Response, Reflector } from '@intentjs/core';
+import { Injectable, IntentGuard, ExecutionContext } from '@intentjs/core';
 import { HasRoles } from '../decorators';
 
 @Injectable()
 export class RoleGuard extends IntentGuard {
-  async guard(
-    req: Request,
-    res: Response,
-    reflector: Reflector,
-  ): Promise<boolean> {
+  async guard(ctx: ExecutionContext): Promise<boolean> {
+    const reflector = ctx.getReflector(); // returns an instance of the Reflector class.
+
     /** If you are setting the metadata on a method, then you can use the `getFromMethod` method. */
     const requiredRoles = reflector.getFromClass(HasRoles); // returns ['admin']
     const user = req.user();
@@ -171,7 +155,7 @@ export class RoleGuard extends IntentGuard {
 }
 ```
 
-You can read more about `Reflector` class [here](/reflectors).
+You can read more about `Reflector` class [here](./reflectors).
 
 ## Global Guards
 You can also create Global Guards, which automatically gets applied on every request. You can use the same guard that we created earlier by simply registering

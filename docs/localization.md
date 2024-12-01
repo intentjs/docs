@@ -30,9 +30,9 @@ Recommended directory structure :
 The configuration for localization is stored at `config/locale.ts`.
 
 ```ts
-import { registerAs } from "@intentjs/core";
+import { configNamespace } from "@intentjs/core";
 
-export default registerAs("localization", () => ({
+export default configNamespace("localization", () => ({
   fallbackLang: "en",
   path: "resources/lang",
 }));
