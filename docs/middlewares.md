@@ -20,8 +20,7 @@ access the context of route handler, you can take a look at [Guards](/guards).
 :::
 
 ## Creating Middlewares
-To create a middleware, you can run the `node intent make:middleware ApiKeyMiddleware` command. This would create a middleware
-called `ApiKeyMiddleware` inside `app/http/middlewares` directory. When you open it, you would see something like below
+To create a middleware, let's create a file `api-key-middleware.ts` inside the `app/http/middlewares` directory, you will need to create a class like shown below inside the file we just created.
 
 ```ts
 import { IntentMiddleware, Request, Response, MiddlewareNext } from '@intentjs/core';

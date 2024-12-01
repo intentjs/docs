@@ -16,10 +16,6 @@ you will likely need a separate class called `Services`, this service class now 
 
 To see service in action, we will need to create a service class first, let's start by creating a `UserService` class inside `app/services` directory.
 
-```bash
-$ node intent make:service user
-```
-
 ```ts
 import { Injectable } from '@intentjs/core';
 

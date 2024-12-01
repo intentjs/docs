@@ -13,10 +13,6 @@ This means that the objects can create various relationships with each other, an
 
 To see providers in action, we we will need to create an injectable class first, in Intent a classic example of Standard Providers can be `Service` class, so let's start by creating a `UserService` class inside `app/services` directory.
 
-```bash
-$ node intent make:service user
-```
-
 ```ts
 import { Injectable } from '@intentjs/core';
 

@@ -61,13 +61,9 @@ export default configNamespace("queue", () => {
 ## Creating Job
 Now that the queue is configured. We can start creating jobs. You can think of jobs as pieces of code which will run on the other end of the queue. Technically, we dispatch jobs that will be pushed into the queue and processed by the queue worker.
 
-By default all of the jobs are stored inside the `app/jobs` directory. You can use the following command to create new job class.
+By default all of the jobs are stored inside the `app/jobs` directory.
 
-```bash
-node intent make:job notification
-```
-
-This command will create a `notificationJob.ts` file inside the `app/jobs` directory. Inside the `handle` method you can write your business logic.
+You will need to create a `notification-jobs.ts` file inside the `app/jobs` directory. Inside the `handle` method you can write your business logic.
 
 ```ts filename="app/jobs/notificationJob.ts"
 import { Injectable, Job } from '@intentjs/core';
