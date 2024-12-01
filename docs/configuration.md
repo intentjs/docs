@@ -22,19 +22,41 @@ IntentJS already makes use of some environment variables to configure database, 
 
 While IntentJS comes with pre-defined configurations, you can always come across instances where you will need to create your own custom configuration. In this section, you will learn how to create your own configuration.
 
-```bash
-node intent make:config settings
+All of the configs are stored inside the `config` directory present at the root.
+
+Let's say you want to create a namespaced config with `settings` name, you can do so by creating a file `config/settings.ts`.
+
+This is how your config will look
+
+```ts [config/settings.ts]
+import { configNamespace } from '@intentjs/core';
+
+export default configNamespace('settings', () => ({
+  yourCustomConfigSetting: true
+}));
+
 ```
 
-This command would automatically create a `settings.ts` file inside `config` directory. Using this command automatically registers the `settings` namespace inside your config service. All you need to do now is to populate values and use them inside your application.
+After creating the `settings` namespace, we now need to register it. You can simply export the `settings` namespaced config from the `config/index.ts` file.
+
+```ts
+import settings from './settings';
+
+export default [
+  settings,
+  // other configs
+];
+```
 
 ## Accessing the configuration values
 
 If you want to refer the configuration inside your application, you can make use `IntentConfig` class.
 
 ```typescript
+import { ConfigService } from '@intentjs/core';
+
 export class AppService {
-  constructor(private config: IntentConfig) {}
+  constructor(private config: ConfigService) {}
 
   async getName() {
     const appName = this.config.get("app.name");
@@ -58,19 +80,20 @@ Following namespaces are reserved for IntentJS.
   code, and ultimately result in some functionality not working.
 :::
 
-- `app`
-- `db`
-- `cache`
-- `filesystem`
-- `queue`
-- `logger`
-- `cron`
-- `locale`
+|Namespace| File Path|
+|---|---|
+|`app` | [`config/app.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/app.ts)|
+|`db` | [`config/db.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/db.ts) |
+| `cache` | [`config/cache.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/cache.ts) |
+| `filesystem` | [`config/filesystem.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/filesystem.ts) |
+| `http` | [`config/http.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/http.ts) |
+| `localization` | [`config/localization.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/localization.ts) |
+| `logger` | [`config/logger.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/logger.ts)|
+| `mailer` | [`config/mailer.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/mailer.ts) |
+| `queue` | [`config/queue.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/queue.ts) |
 
 ## Best Practices
 
 This section mentions some of the best practices when it comes to managing and accessing configurations in your applications.
 
-✅ We recommend keeping the usage of `process.env` limited to the `config` directory only. You can then read the values from the IntentConfig class. Another reason of doing this is that reading process.env will be a little slow as compared to reading the value from `IntentConfig` class.
-
-✅ Use `IntentConfig` wherever possible, it comes with an internal caching which automatically caches the keys you are accessing during run-time.
+✅ We recommend keeping the usage of `process.env` limited to the `config` directory only. You can then read the values from the IntentConfig class. Another reason of doing this is that reading process.env will be a little slow as compared to reading the value from `ConfigService` class.

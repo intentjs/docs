@@ -82,8 +82,6 @@ You can use the `local` disk to manage the file objects stored locally on your s
 }
 ```
 
-To serve the file objects from your project, have a look at [serve-static](https://docs.nestjs.com/recipes/serve-static) module by NestJS.
-
 ## Disks
 
 We understand that while working on a big project, you may sometime encounter case where you will have to handle multiple type of files and filesystems at once.

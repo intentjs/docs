@@ -5,7 +5,7 @@ image:
 ---
 # Error Handling
 
-Intent utilises `ExceptionFilter` by NestJS. When you create a new app, it comes with an HTTP Exception Filter which you can customise as per your need. You can make changes to the `handleHttp` method as per your need.
+Intent comes with a base `ExceptionHandler` which you can use to handle most of your errors that will ever happen inside during your request-response lifecycle. When you create a new app, it comes with an HTTP Exception Filter which you can customise as per your need. You can make changes to the `handleHttp` method as per your need.
 
 When you start a new Intent application, it comes pre-configured with an `ApplicationExceptionFilter` located inside `app/errors/filter.ts` directory.
 
@@ -22,14 +22,7 @@ export default configNamespace(
   'app',
   () =>
     ({
-      name: process.env.APP_NAME || 'NestJS App',
-      env: process.env.APP_ENV || 'local',
-      debug: toBoolean(process.env.APP_DEBUG || true),
-      url: process.env.APP_URL || 'localhost',
-      port: +process.env.APP_PORT || 5000,
-      cors: { origin: true },
-      locale: 'en',
-      currency: 'INR',
+      // ...
 
       error: {
         validationErrorSerializer: ValidationErrorSerializer,
@@ -73,11 +66,12 @@ To handle `HttpException` inside your application, the `ApplicationExceptionFilt
 Let's say you want to handle `ValidationFailed` exception, you can do it like below
 
 ```ts
-handleHttp(exception: any, req: Request, res: Response) {
+handleHttp(ctx: ExecutionContext, exception: any) {
     if (exception instanceof ValidationFailed) {
-        return res.send(422).send({ error: 'validation failed' });
+        return res.status(422).json({ error: 'validation failed' });
     }
-    return res.status(this.getStatus(exception)).send(exception);
+  
+    return res.status(this.getStatus(exception)).json(exception);
 }
 ```
 
