@@ -19,6 +19,7 @@ export default defineConfig({
       return url.toLowerCase().includes("ignore");
     },
   ],
+  cleanUrls: true,
   base: "/",
   themeConfig: {
     siteTitle: "IntentJS",
