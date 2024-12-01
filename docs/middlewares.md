@@ -16,7 +16,7 @@ You can use middlewares to handle the following use cases
 
 :::info
 Middlewares are dumb in nature, which means they don't know which route handler will be called to handle the request. If you are looking to
-access the context of route handler, you can take a look at [Guards](/guards).
+access the context of route handler, you can take a look at [Guards](./guards.md).
 :::
 
 ## Creating Middlewares

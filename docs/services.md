@@ -31,7 +31,7 @@ export class UserService {
 Notice the `Injectable` decorator above the `UserService`, this lets runtime system know that this call will either have some class injected inside it, or this will be injected somewhere.
 
 After creating the `Injectable` class, you will now need to register it inside the `app/boot/sp/app.ts` file. You can read more about
-[Service Providers](/service-providers) if you are not entirely clear.
+[Service Providers](./service-providers.md) if you are not entirely clear.
 
 ```ts
 import { ServiceProvider } from '@intentjs/core';
@@ -63,4 +63,4 @@ export class UserController {
 
 The `UserService` is injected through the class constructor. Notice the use of the private syntax. This shorthand allows us to both declare and initialize the `service` member immediately in the same location.
 
-Services are based on providers, if you would like to read more about it, check [here](/providers).
+Services are based on providers, if you would like to read more about it, check [here](./providers.md).

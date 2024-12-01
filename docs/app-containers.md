@@ -6,7 +6,7 @@ image:
 # Application Containers
 
 Intent is internally dependent on an application container be it for HTTP server, console commands, cron server or queue commands.
-You can think of these containers as an encapsulation of multiple [Service Providers](/service-providers). This is done so as to keep
+You can think of these containers as an encapsulation of multiple [Service Providers](./service-providers.md). This is done so as to keep
 the application lightweight, for example you don't need controllers inside the console commands, queue worker or cron servers. So we will simply
 skip adding it inside the relevant application containers.
 

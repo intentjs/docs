@@ -59,4 +59,4 @@ $ npx new-intent-app@latest
 ✔ Reset git history
 ```
 
-Once the command has run, you can take a look at the [first project](/first-project) to getting it running.
+Once the command has run, you can take a look at the [first project](./first-project.md) to getting it running.

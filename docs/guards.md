@@ -45,7 +45,7 @@ Inside the `guard` method, you get access to only 1 arguments, ie `ExecutionCont
 
 The `guard` method needs to return `true` or `false` as return values, where `true` means it's a pass and `false` means it's a fail. When a guard fails, it throws a `403` error code.
 
-You can also throw errors directly from your guard. All of the exceptions thrown from the guards are captured inside the [Exception Filters](/error-handling).
+You can also throw errors directly from your guard. All of the exceptions thrown from the guards are captured inside the [Exception Filters](./error-handling.md).
 
 ```ts
 import { Injectable, IntentGuard, ExecutionContext } from '@intentjs/core';

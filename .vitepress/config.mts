@@ -4,6 +4,22 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "IntentJS",
   description: "A fresh take on traditional nodejs frameworks,",
+  sitemap: {
+    hostname: "https://tryintent.com",
+  },
+  ignoreDeadLinks: [
+    // ignore exact url "/playground"
+    "/playground",
+    // ignore all localhost links
+    /^https?:\/\/localhost/,
+    // ignore all links include "/repl/""
+    /\/repl\//,
+    // custom function, ignore all links include "ignore"
+    (url) => {
+      return url.toLowerCase().includes("ignore");
+    },
+  ],
+  base: "/",
   themeConfig: {
     siteTitle: "IntentJS",
     logo: "/logo.png",

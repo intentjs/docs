@@ -28,7 +28,7 @@ export class UserService {
 Notice the `Injectable` decorator above the `UserService`, this lets runtime system know that this call will either have some class injected inside it, or this will be injected somewhere.
 
 After creating the `Injectable` class, you will now need to register it inside the `app/boot/sp/app.ts` file. You can read more about
-[Service Providers](/service-providers) if you are not entirely clear.
+[Service Providers](./service-providers.md) if you are not entirely clear.
 
 ```ts
 import { ServiceProvider } from '@intentjs/core';
@@ -65,9 +65,9 @@ The `UserService` is injected through the class constructor. Notice the use of t
 Since Intent is built on top of of NestJS, it makes complete sense to utilise the Nest's in-built Inversion of Control (IoC) container in Intent as well.
 All of the dependency injection concepts that you know of Intent is fully valid and applicable in Intent as well (with some syntax changes).
 
-Intent tries to simplify the concept of IoC container with the help of [Service Providers](/service-providers). If you are trying out intent for the first time, we recommend reading [`Angular's`](https://angular.dev/guide/di) explanation of Dependency Injection.
+Intent tries to simplify the concept of IoC container with the help of [Service Providers](./service-providers.md). If you are trying out intent for the first time, we recommend reading [`Angular's`](https://angular.dev/guide/di) explanation of Dependency Injection.
 
-To understand, how you can implement it in Intent, you can do so by using [`Service Providers`](/service-providers). 
+To understand, how you can implement it in Intent, you can do so by using [`Service Providers`](./service-providers.md). 
 
 ## Property Based Injection
 

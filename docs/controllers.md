@@ -56,7 +56,7 @@ export class HttpKernel extends Kernel {
 The `HttpKernel` class is then passed to the `IntentHttpServer` inside `main.ts`. 
 
 We don't use `HttpKernel` just for registering controllers, but also for adding global middlewares, route based middlewares and guards. 
-If you would like to know more how to use HttpKernel, read [middlewares](/middlewares) and [guards](/guards).
+If you would like to know more how to use HttpKernel, read [middlewares](./middlewares.md) and [guards](./guards.md).
 
 ## Routing
 
