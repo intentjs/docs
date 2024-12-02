@@ -23,6 +23,7 @@ export default defineConfig({
   srcDir: "./docs",
   outDir: "./dist",
   cleanUrls: true,
+  appearance: "dark",
   themeConfig: {
     siteTitle: "IntentJS",
     logo: "/logo.png",
