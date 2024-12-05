@@ -24,13 +24,18 @@ export default defineConfig({
   outDir: "./dist",
   cleanUrls: true,
   appearance: "dark",
+  rewrites: {
+    "/": "/installation",
+  },
   themeConfig: {
     siteTitle: "IntentJS",
-    logo: "/logo.png",
+    logo: {
+      src: "/logo.png",
+    },
     // https://vitepress.dev/reference/default-theme-config
     footer: {
       message: "Developed by Humans at HanaLabs",
-      copyright: "Copyright © 2024-present Vinayak",
+      copyright: "Copyright © 2024-present Vinayak Sarawagi",
     },
     search: {
       provider: "local",
@@ -44,7 +49,7 @@ export default defineConfig({
       { text: "Docs", link: "/installation" },
     ],
     editLink: {
-      pattern: "https://github.com/intentjs/docs-v2/edit/main/docs/:path",
+      pattern: "https://github.com/intentjs/docs/edit/main/docs/:path",
       text: "Edit this page on GitHub",
     },
 

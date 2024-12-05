@@ -4,15 +4,12 @@
 
 :root {
     --vp-c-primary: #99e600;
-    --vp-c-primary-light: #99e600;
-    --vp-c-primary-lighter: #99e600;
+    --vp-c-primary-light: #6d9e0b;
+    --vp-c-primary-lighter: #6d9e0b;
     --vp-c-primary-dark: #99e600;
     --vp-c-primary-darker: #99e600;
 
-    --vp-c-brand-1: #99e600;
+    --vp-c-brand-1: #6d9e0b;
     --vp-c-brand-2: #747bff;
 
 }
-
-:root {
-  }
