@@ -326,13 +326,13 @@ To start listening to the messages, you can simply do
 await worker.listen();
 ```
 
-{/* #### Purge Queue
+#### Purge Queue
 
 You may want to clear(purge) the queue, you can do so by calling `purge` method.
 
 ```typescript
 await worker.purge();
-``` */}
+```
 
 ## Drivers
 
@@ -346,7 +346,7 @@ This package supports the following drivers as of now
 4. [DB Driver](#db-driver)
 5. [Custom Driver](#custom-driver)
 
-### Sync Driver [#sync-driver]
+### Sync Driver {#sync-driver}
 
 This is the easiest driver of all. There can be some cases where you may want to run your code synchronously for testing or debugging purposes. So, to keep it simple, this package provides out-of-the box support for running your `Jobs` synchronously.
 
@@ -355,7 +355,7 @@ If you are using a SyncDriver, you will have to ensure that you you are
   dispatching and consuming jobs in the same app.
 :::
 
-### SQS Driver [#sqs-driver]
+### SQS Driver {#sqs-driver}
 
 [AWS SQS](https://aws.amazon.com/sqs/) is one of the most popular choice of using managed queue service. To use the driver, you need to install it first.
 
@@ -401,7 +401,7 @@ export default configNamespace("queue", () => {
 | secretKey | Secret Key of the AWS Acccout |
 | credentials | One of the `credentials` method mentioned in [@aws-sdk/credential-providers](https://www.npmjs.com/package/@aws-sdk/credential-providers) |
 
-### Redis Driver [#redis-driver]
+### Redis Driver {#redis-driver}
 
 You can also use Redis as your queue driver. You can install it like below
 
@@ -447,7 +447,7 @@ export default configNamespace("queue", () => {
 | prefix | Prefix of the queue (useful if you are using single redis server for multiple apps)|
 | url | a fully qualified url string of the redis connection |
 
-### Database Driver [#db-driver]
+### Database Driver {#db-driver}
 If you are just starting out with your application, and don't want to pay for third party services. You can use Database as a message queue.
 Intent internally uses the same database connection that is used, so we don't need to re-configure our db connection for queue.
 
@@ -477,7 +477,7 @@ export default configNamespace("queue", () => {
   whenever you run `node intent migrate`.
 :::
 
-### Custom Driver [#custom-driver]
+### Custom Driver {#custom-driver}
 
 If you want to use your own custom queue driver, you can do so by extending `PollQueueDriver` class from `@intentjs/core` package.
 

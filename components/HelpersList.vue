@@ -1,9 +1,9 @@
 <template>
     <div class="grid grid-cols-4 gap-3 mx-auto py-2">
-        <div v-for="item in items" :key="item.label" class="underline text-primary">
-            <router-link :to="item.href || ''">
+        <div v-for="item in items" :key="item.label" class="underline text-primary font-medium">
+            <a :href="item.href || ''">
                 {{ item.label }}
-            </router-link>
+            </a>
         </div>
     </div>
 </template>

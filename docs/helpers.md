@@ -45,7 +45,7 @@ IntentJS provides the following helpers
 
 ## Array Helper Methods
 
-### collapse [#arr-collapse]
+### collapse {#arr-collapse}
 
 You can use `Arr.collapse` method to collapse a nested array into a single level.
 
@@ -55,7 +55,7 @@ Arr.collapse(['a', ['b', ['c'], 1], 2]);
 // [ 'a', 'b', 'c', 1, 2 ]
 ```
 
-### except [#arr-except]
+### except {#arr-except}
 The `Arr.except` is a method which you can use to remove some index, or keys from an array of objects.
 
 ```ts
@@ -87,7 +87,7 @@ Arr.except(goats, ['2.sport'])
 */
 ```
 
-### pick [#arr-pick]
+### pick {#arr-pick}
 Unlike `Arr.except`, you can use `Arr.pick` method to only pick selected indices, keys from an array.
 
 ```ts
@@ -119,7 +119,7 @@ Arr.pick(goats, ['0.name', '1.sport', '2.name', '3.sport']);
 */
 ```
 
-### random [#arr-random]
+### random {#arr-random}
 The `Arr.random` method shuffles the elements of an array.
 
 ```ts
@@ -142,7 +142,7 @@ Arr.random(goats);
 */
 ```
 
-### toObj [#arr-to-obj]
+### toObj {#arr-to-obj}
 
 The `Arr.toObj` method transforms the array to an object.
 
@@ -164,7 +164,7 @@ const obj = Arr.toObj(array, ["book", "author"]);
 
 ## Object Helper Methods
 
-### dot [#obj-dot]
+### dot {#obj-dot}
 
 The `Obj.dot` converts a nested object to dot notation object
 
@@ -185,7 +185,7 @@ const dotObj = Obj.dot(obj);
 */
 ```
 
-### entries [#obj-entries]
+### entries {#obj-entries}
 
 The `Obj.entries` method converts a deeply nested object into a \[key, value] array. If the object is nested, it would automatically convert the obj to dot notation.
 
@@ -208,7 +208,7 @@ const objEntries = Obj.entries(obj);
 */
 ```
 
-### except [#obj-except]
+### except {#obj-except}
 
 The `Obj.except` method helps you quickly get a new object except the list of keys that you specify.
 ```ts
@@ -248,7 +248,7 @@ Obj.except(obj, ['firstName', 'lastName', 'wishlist.*.id']);
  */
 ```
 
-### get [#obj-get]
+### get {#obj-get}
 
 The `Obj.get` method can be used to fetch a value from an object by using dot notation.
 
@@ -280,7 +280,7 @@ Obj.get(obj, 'address.country.name');
 // India
 ```
 
-### isEmpty [#obj-is-empty]
+### isEmpty {#obj-is-empty}
 To check if an object is empty, you can make use of `Obj.isEmpty` method.
 
 ```ts
@@ -294,7 +294,7 @@ Obj.isEmpty([]);
 // true
 ```
 
-### isNotEmpty [#obj-is-not-empty]
+### isNotEmpty {#obj-is-not-empty}
 Incase you want to check if an object is not empty, `Obj.isNotEmpty` can help you.
 
 ```ts
@@ -343,7 +343,7 @@ Obj.pick(obj, ["firstName", "lastName", "wishlist.*.id"]);
 
 All of the number helpers are exported from `import { Num } from '@intentjs/core'`
 
-### abbreviate [#num-abbreviate]
+### abbreviate {#num-abbreviate}
 
 The abbreviate method returns the human-readable format of the provided numerical value.
 
@@ -360,7 +360,7 @@ Num.abbreviate(1200, { locale: "hi" });
 // 1.2 हज़ार
 ```
 
-### clamp [#num-clamp]
+### clamp {#num-clamp}
 
 Clamp helper allows you to ensure that the given number remains within the specified range. f the number is lower than the minimum, the minimum value is returned. If the number is higher than the maximum, the maximum value is returned:
 
@@ -378,7 +378,7 @@ Num.clamp(110, 20, 100);
 // 100
 ```
 
-### currency [#num-currency]
+### currency {#num-currency}
 
 Currency helper returns the currency format of a given number.
 
@@ -390,7 +390,7 @@ Num.currency(12300, { currency: "USD" });
 // $12,300.00
 ```
 
-### fileSize [#num-file-size]
+### fileSize {#num-file-size}
 
 The `fileSize` method returns the file size representation of the number passed.
 
@@ -405,7 +405,7 @@ Num.fileSize(1024 * 1024 * 1.5, { precision: 2 });
 // 1.57MB
 ```
 
-### forHumans [#num-for-humans]
+### forHumans {#num-for-humans}
 
 `forHumans` method returns the expanded human-readable format of the given number.
 
@@ -423,7 +423,7 @@ Num.forHumans(1230, { locale: "en" });
 // 1,2 millier
 ```
 
-### format [#num-format]
+### format {#num-format}
 
 The `format` method formats the number into the given locale string.
 
@@ -438,7 +438,7 @@ Num.format(1200);
 // 1,200
 ```
 
-### ordinal [#num-ordinal]
+### ordinal {#num-ordinal}
 
 Ordinal method returns the ordinal format of a number.
 
@@ -456,7 +456,7 @@ Num.ordinal(20);
 // 20th
 ```
 
-### percentage [#num-percentage]
+### percentage {#num-percentage}
 
 `Num.percentage` method formats the given value into a percentage string.
 
@@ -473,7 +473,7 @@ Num.percentage(10.123, { precision: 2 });
 
 ## String Helper Methods
 
-### after [#str-after]
+### after {#str-after}
 
 The `Str.after` method returns the string after the specified `substr`.
 
@@ -484,7 +484,7 @@ const result = Str.after(sentence, "fox");
 // jumps over a lazy dog.
 ```
 
-### before [#str-before]
+### before {#str-before}
 
 The `Str.after` method returns the string before the specified `substr`, excluding the `subtr`.
 
@@ -495,7 +495,7 @@ const result = Str.before(sentence, "fox");
 // The quick brown
 ```
 
-### between [#str-between]
+### between {#str-between}
 
 The `Str.between` method returns the string present between the specified `start` and `end`.
 
@@ -506,7 +506,7 @@ const result = Str.between(sentence, "brown", "jumps");
 // fox
 ```
 
-### camel [#str-camel]
+### camel {#str-camel}
 
 The `Str.camel` method converts given string into it's `camelCase` representation.
 
@@ -521,7 +521,7 @@ const example2 = "Hey_there, What's up?";
 Str.camel(example2); // heyThereWhatSUp
 ```
 
-### contains [#str-contains]
+### contains {#str-contains}
 
 You can use `Str.contains` method to check if specified `str` is present in a given string.
 
@@ -533,7 +533,7 @@ Str.contains(sentence, "over"); // returns true
 Str.contains(sentence, "over2"); // returns false
 ```
 
-### containsAll [#str-contains-all]
+### containsAll {#str-contains-all}
 
 If you want to search for all specified `str`s to be present in the given string, you can use `Str.containsAll` method.
 
@@ -545,7 +545,7 @@ Str.containsAll(sentence, ["fox", "dog"]); // returns true
 Str.containsAll(sentence, ["fox", "whale"]); // returns false
 ```
 
-### endsWith [#str-ends-with]
+### endsWith {#str-ends-with}
 
 In cases where you want to check if given string ends with a `substr`, you can use `Str.endsWith` method.
 
@@ -555,7 +555,7 @@ const sentence = "The quick brown fox jumps over a lazy dog.";
 Str.endsWith(sentence, "dog."); // returns true
 ```
 
-### headline [#str-headline]
+### headline {#str-headline}
 
 `Str.headline` method converts the given string into HeadLine case. This also strips all special characters.
 
@@ -565,7 +565,7 @@ const sentence = "Is this real?";
 Str.headline(sentence); // Is This Real?
 ```
 
-### is [#str-is]
+### is {#str-is}
 
 `Str.is` method can be used for pattern matching a substr with given string, or even for exact matching as well.
 
@@ -579,7 +579,7 @@ Str.is(str, "*:create"); // true
 Str.is(str, "admin"); // false
 ```
 
-### isEmail [#str-is-email]
+### isEmail {#str-is-email}
 
 `Str.isEmail` method validates if given string is an email or not.
 
@@ -589,7 +589,7 @@ Str.isEmail("hi@tryintent.com"); // true
 Str.isEmail("tryintent.com"); // false
 ```
 
-### isJson [#str-is-json]
+### isJson {#str-is-json}
 
 `Str.isJson` method validates if the given string can be parsed into `JSON` format or not.
 
@@ -599,7 +599,7 @@ Str.isJson('{"name": "Intent"}'); // true
 Str.isJson('{"name": "Intent"'); // false
 ```
 
-### isUrl [#str-is-url]
+### isUrl {#str-is-url}
 
 `Str.isUrl` method checks if the given string is a valid URL or not.
 
@@ -613,7 +613,7 @@ Str.isUrl("docs.tryintent.com"); // true
 Str.isUrl("http2://tryintent.com"); // false
 ```
 
-### isUlid [#str-is-ulid]
+### isUlid {#str-is-ulid}
 
 You can use `Str.isUlid` to verify if the given string obeys `ULID` format or not.
 
@@ -623,7 +623,7 @@ Str.isUlid("01ARZ3NDEKTSV4RRFFQ69G5FAV"); // true
 Str.isUlid("admin"); // false
 ```
 
-### kebab [#str-kebab]
+### kebab {#str-kebab}
 
 `Str.kebab` method converts the given string into `kebab-case`.
 
@@ -638,7 +638,7 @@ const example2 = "Hey_there, What's up?";
 Str.kebab(example2); // hey-there-what-s-up
 ```
 
-### lcfirst [#str-lcfirst]
+### lcfirst {#str-lcfirst}
 
 `Str.lcfirst` can be used to convert the first character to lowercase.
 
@@ -648,7 +648,7 @@ Str.lcfirst("INTENT"); // iNTENT
 Str.lcfirst("Intent"); // intent
 ```
 
-### length [#str-length]
+### length {#str-length}
 
 You can use `Str.len` to get the length of a given string.
 
@@ -658,7 +658,7 @@ Str.len("intent"); // 6
 Str.len(undefined); // 0
 ```
 
-### limit [#str-limit]
+### limit {#str-limit}
 
 If you want only `n` length of characters from a given string, you can use `Str.limit` method.
 
@@ -675,7 +675,7 @@ Str.limit(sentence, 50);
 // The quick brown fox jumps over a lazy dog.
 ```
 
-### lower [#str-lower]
+### lower {#str-lower}
 
 `Str.lower` transforms the given string into lower case.
 
@@ -684,7 +684,7 @@ Str.lower("VINAYAK SARAWAGI");
 // vinayak sarawagi
 ```
 
-### mask [#str-mask]
+### mask {#str-mask}
 
 You can use `Str.mask` method to mask a given string.
 First argument accepts a string, 2nd argument accepts the masked character,
@@ -696,7 +696,7 @@ Str.mask("hi@tryintent.com", "*", 7);
 // hi@tryi*********
 ```
 
-### padBoth [#str-pad-both]
+### padBoth {#str-pad-both}
 
 You can use `Str.padBoth` method to pad your strings from both the ends with given `char` to a defined length.
 
@@ -705,7 +705,7 @@ Str.padBoth("intent", 10, "~");
 // ~~intent~~
 ```
 
-### padLeft [#str-pad-left]
+### padLeft {#str-pad-left}
 
 Similar to `Str.padBoth`, but if you want to just pad the left side of the string, you can use `Str.padLeft` method.
 
@@ -714,7 +714,7 @@ Str.padLeft("intent", 10, "~");
 // ~~~~intent
 ```
 
-### padRight [#str-pad-right]
+### padRight {#str-pad-right}
 
 Similar to `Str.padBoth`, but if you want to just pad the right side of the string, you can use `Str.padRight` method.
 
@@ -723,7 +723,7 @@ Str.padRight("intent", 10, "~");
 // intent~~~~
 ```
 
-### pluralize [#str-pluralize]
+### pluralize {#str-pluralize}
 The `Str.plural` method converts a given method to a plural form.
 
 ```ts
@@ -740,7 +740,7 @@ Str.pluralize('alumnus');
 // alumni
 ```
 
-### remove [#str-remove]
+### remove {#str-remove}
 
 If you want to just remove certain characters from a given string, `Str.remove` can do that for you.
 
@@ -749,7 +749,7 @@ Str.remove("New OSS NodeJS Framework", "OSS ");
 // New NodeJS Framework
 ```
 
-### repeat [#str-repeat]
+### repeat {#str-repeat}
 
 `Str.repeat` method returns a new string with `repeat` string for `x` times.
 
@@ -758,7 +758,7 @@ Str.repeat("chug ", 5);
 // chug chug chug chug chug
 ```
 
-### replace [#str-replace]
+### replace {#str-replace}
 The `Str.replace` method can be used to replace a given string with another string.
 
 ```ts
@@ -769,7 +769,7 @@ Str.replace('I Hate intent!', 'hate', 'love', true);
 // I love intent!
 ```
 
-### replaceArray [#str-replace-array]
+### replaceArray {#str-replace-array}
 The `Str.replaceArray` method replaces the matching string sequentially with the string array.
 
 ```ts
@@ -779,7 +779,7 @@ Str.replaceArray(str, '?', ['8:30', '9:30PM']);
 // I will be there between 8:30 and 9:30PM;
 ```
 
-### replaceFirst [#str-replace-first]
+### replaceFirst {#str-replace-first}
 The `Str.replaceFirst` method replaces only the first matching string with the replacement string.
 
 ```ts
@@ -789,7 +789,7 @@ Str.replaceFirst(sentence, 'the', 'a');
 // a quick brown fox jumps over a lazy dog.
 ```
 
-### replaceLast [#str-replace-last]
+### replaceLast {#str-replace-last}
 The `Str.replaceLast` method can be used to replace only the last matching string with the replacement string.
 
 ```ts
@@ -799,7 +799,7 @@ Str.replaceLast(sentence, 'the', 'a');
 // the quick brown fox jumps over a lazy dog.
 ```
 
-### reverse [#str-reverse]
+### reverse {#str-reverse}
 
 `Str.reverse` reverses the string.
 
@@ -808,7 +808,7 @@ Str.reverse("wtf! why reverse?");
 // ?esrever yhw !ftw
 ```
 
-### singular [#str-singular]
+### singular {#str-singular}
 
 You can use `Str.singular` to convert a given word in a singular form.
 
@@ -826,7 +826,7 @@ Str.singular('matrices');
 // matrix
 ```
 
-### slug [#str-slug]
+### slug {#str-slug}
 
 You can use `Str.slug` method to convert any string to a slug form.
 
@@ -845,7 +845,7 @@ Str.slug("@@@@@@jell----fw  fed");
 // jell-fw-fed
 ```
 
-### snake [#str-snake]
+### snake {#str-snake}
 
 `Str.snake` transforms the given string into `snake_case`.
 
@@ -856,7 +856,7 @@ Str.snake(title);
 // how_to_get_started_with_intent
 ```
 
-### startsWith [#str-starts-with]
+### startsWith {#str-starts-with}
 
 If you want to check if any string starts with a `substr` or not.
 
@@ -865,7 +865,7 @@ Str.startsWith("A Product Stack Framework", "A Product");
 // true
 ```
 
-### swap [#str-swap]
+### swap {#str-swap}
 
 You can use `Str.swap` method to swap multiple words with some other words.
 
@@ -874,7 +874,7 @@ Str.swap("Butter Chicken", { Butter: "Chilli", Chicken: "Paneer" });
 // Chilli Paneer
 ```
 
-### take [#str-take]
+### take {#str-take}
 
 The `Str.take` method returns the specified number of chars from the beginning of the string.
 
@@ -885,7 +885,7 @@ Str.take(sentence, 9);
 // The quick
 ```
 
-### title [#str-title]
+### title {#str-title}
 
 The `Str.title` converts the given string into `Title` format.
 
@@ -896,7 +896,7 @@ Str.title(sentence);
 // The Quick Brown Fox Jumps Over A Lazy Dog.
 ```
 
-### toBase64 [#str-to-base64]
+### toBase64 {#str-to-base64}
 
 The `Str.toBase64` converts the string into base64 format.
 
@@ -907,7 +907,7 @@ Str.toBase64(sentence);
 // VGhlIHF1aWNrIGJyb3duIGZveCBqdW1wcyBvdmVyIGEgbGF6eSBkb2cu
 ```
 
-### ucfirst [#str-ucfirst`]
+### ucfirst {#str-ucfirst}
 
 The `Str.ucFirst` returns the string with it's first character capitalized.
 
@@ -916,7 +916,7 @@ Str.ucfirst("hey intent");
 // Hey intent
 ```
 
-### words [#str-words]
+### words {#str-words}
 
 The `Str.words` method returns the words present in the given sentence. It can also ignore the special characters, and unicodes.
 
@@ -932,7 +932,7 @@ Str.words("fox🤨and🤨dog", true);
 // [ 'fox', 'and', 'dog' ]
 ```
 
-### wrap [#str-wrap]
+### wrap {#str-wrap}
 
 The `Str.wrap` function wraps the strings in `prefix` and `suffix`.
 
