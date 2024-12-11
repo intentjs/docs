@@ -28,7 +28,7 @@ This is where all of your typescript files are transpiled and stored as `*.js` f
 
 ### The `node_modules` directory
 
-The `dist` directory contains all of your application dependencies.
+The `node_modules` directory contains all of your application dependencies.
 
 ### The `public` directory
 
@@ -42,9 +42,9 @@ The `resources` directory holds all of the `localisation` or `translation` files
 
 The `storage` directory contains all of the framework `log` files. It also contains an empty `app` directory, which you can use to store user generated files. To do so, most likely you will make use of [Storage](https://tryintent.com/docs/file-storage) class which comes packed with features.
 
-## The App directory
+## The `App` directory
 
-The App directory is where most of your business logic will reside. The directory contains controllers, providers, console commands, event listeners, jobs, mails, validators, etc.
+The `App` directory is where most of your business logic will reside. The directory contains controllers, providers, console commands, event listeners, jobs, mails, validators, etc.
 
 ### The `console` directory
 
