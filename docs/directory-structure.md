@@ -28,7 +28,7 @@ This is where all of your typescript files are transpiled and stored as `*.js` f
 
 ### The `node_modules` directory
 
-The `dist` directory contains all of your application dependencies.
+The `node_modules` directory contains all of your application dependencies.
 
 ### The `public` directory
 
