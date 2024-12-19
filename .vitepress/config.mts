@@ -32,6 +32,7 @@ export default defineConfig({
     logo: {
       src: "/logo.png",
     },
+    logoLink: "/docs/installation",
     // https://vitepress.dev/reference/default-theme-config
     footer: {
       message: "Developed by Humans at HanaLabs",
