@@ -1,5 +1,7 @@
 <script>
-window.location.href = '/docs/installation'
+if (typeof window !== 'undefined') {
+    window.location.href = '/docs/installation'
+}
 </script>
 
 # IntentJS Documentation
