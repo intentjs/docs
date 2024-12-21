@@ -29,7 +29,7 @@ There are two ways you can define commands in your application.
 If you want to automatically create the `@Command` class, you can simply run the following command.
 
 ```bash
-$ node intent make:command NewCommand
+node intent make:command NewCommand
 ```
 
 This command will automatically create a `newCommand.ts` file in `commands` directory, and add it to the `providers` attribute of the app module class.
@@ -164,7 +164,7 @@ Example:
 You can pass values to the options as mentioned below.
 
 ```bash
-$ node intent hello --name=vinayak
+node intent hello --name=vinayak
 ```
 
 To read the value from the console in your command, you can make use of the `option` method present inside the `ConsoleIO`.
@@ -180,7 +180,7 @@ hello {--names*}
 ```
 
 ```bash
-$ node intent hello --name=vinayak --name=piyush
+node intent hello --name=vinayak --name=piyush
 ```
 
 You can also define default values for the arguments or options by adding a `=` equal sign followed by the value.
@@ -198,7 +198,7 @@ hello {--n|name}
 Instead of using the full qualified name of the option, we can also use the short form as well.
 
 ```bash
-$ node intent hello -n vinayak
+node intent hello -n vinayak
 ```
 
 :::info
