@@ -20,8 +20,9 @@ Setting up a new Intent project is quite easy with `npm` installed. You can run 
 
 It will ask you a few questions, you can choose `Yes` or `No` as per your requirement.
 ```bash live=true
-$ npx new-intent-app@latest
-
+npx new-intent-app@latest
+```
+```bash 
 ? What's your *Intent* to name this project? new-sample-app
 ? Are you planning to use AWS in your application? Yes
 ? Would you like to use Redis in your application? Yes
@@ -88,7 +89,7 @@ DEFAULT_MAILER=logger
 To run the project locally in watch mode, you can simply run the following command in your terminal.
 
 ```ts
-$ node intent dev
+node intent dev
 ```
 
 Visit [http://localhost:5001](http://localhost:5001), and you should be greeted with a message.
@@ -98,8 +99,9 @@ Since, Intent comes with support for console commands as well, it will only be f
 Headover to your terminal, and run the following command.
 
 ```bash
-$ node intent greet
-
+node intent greet
+```
+```bash
 Horace Slughorn once said -
 "It is impossible to manufacture or imitate love"
 ```
