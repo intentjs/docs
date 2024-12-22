@@ -156,13 +156,13 @@ You will need [Node.js](https://nodejs.org) version >= 20.15.0.
 1. After cloning the repo, run:
 
 ```bash
-$ npm install
+npm install
 ```
 
 2. In order to prepare the `integrations/sample-app`, run the `setup.sh` shell script.
 
 ```bash
-$ sh scripts/setup.sh
+sh scripts/setup.sh
 ```
 
 This will initialise some necessary files, run a build, link the binaries.
@@ -170,7 +170,7 @@ This will initialise some necessary files, run a build, link the binaries.
 3. Now get the project running using the `npm run dev` command.
 
 ```bash
-$ npm run dev
+npm run dev
 ```
 
 ### <a name="common-scripts"></a>Commonly used NPM scripts
@@ -180,7 +180,7 @@ $ npm run dev
 $ npm run dev
 
 # Build the project
-npm run build
+$ npm run build
 
 # run the full unit tests suite
 $ npm run test
