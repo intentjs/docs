@@ -47,8 +47,9 @@ Some features are delivered out-of-the-box and some you can integrate as you nee
 Intent works best when you create your new application with Intent itself, to do so, simply run
 
 ```bash
-$ npx new-intent-app@latest
-
+npx new-intent-app@latest
+```
+```bash
 ? What's your *Intent* to name this project? new-sample-app
 ? Are you planning to use AWS in your application? Yes
 ? Would you like to use Redis in your application? Yes
