@@ -60,7 +60,7 @@ DEFAULT_DB=sqlite
 ```
 Whenever you launch a new project with Intent, it comes with `SQLite` configured as it's database. This helps you quickly get started.
 
-If you wish to change the database configuration, click [here](https://tryintent.com/docs/db-getting-started).
+If you wish to change the database configuration, click [here](https://tryintent.com/docs/databases/getting-started).
 
 ```ts
 DEFAULT_CACHE=memory
