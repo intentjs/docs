@@ -20,16 +20,8 @@ Setting up a new Intent project is quite easy with `npm` installed. You can run 
 
 It will ask you a few questions, you can choose `Yes` or `No` as per your requirement.
 ```bash live=true
-npx new-intent-app@latest
-```
-```bash 
-? What's your *Intent* to name this project? new-sample-app
-? Are you planning to use AWS in your application? Yes
-? Would you like to use Redis in your application? Yes
-✔ Cloning repository
-✔ Installing dependencies
-✔ Setting up .env
-✔ Reset git history
+npm i -g @intentjs/cli
+intent new my-project
 ```
 
 Once this command has ran, move to the directory `new-sample-app` and open it inside your fav code editor.
@@ -46,7 +38,7 @@ You are free to make the changes as per your requirement.
 Now when you open the `.env` inside the project, you will see set of following variables.
 
 ```ts
-DEFAULT_DB=sqlite
+DEFAULT_DB=pg
 DEFAULT_CACHE=memory
 DEFAULT_QUEUE=sync
 DEFAULT_STORAGE=local

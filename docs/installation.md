@@ -26,11 +26,11 @@ Intent is a web application framework for devs and teams who intends to build an
 
 Intent provides necessary feature-integrations out of the box.
 
-- **RDBMS** - MySQL, PostgreSQL,
-- **Storage** - Unix File System AWS S3.
-- **Message** Queues - AWS SQS, Redis
-- **Mailers** - SMTP, Mailgun, Resend
-- **Caching** - Redis, In-Memory
+- **RDBMS** - MySQL, PostgreSQL, SQLite
+- **Storage** - Unix File System AWS S3
+- **Message** Queues - AWS SQS, Redis, Database.
+- **Mailers** - SMTP, Mailgun, Resend.
+- **Caching** - Redis, In-Memory.
 - **Logging**
 - **Validations**
 - **Transformers**
@@ -47,16 +47,8 @@ Some features are delivered out-of-the-box and some you can integrate as you nee
 Intent works best when you create your new application with Intent itself, to do so, simply run
 
 ```bash
-npx new-intent-app@latest
-```
-```bash
-? What's your *Intent* to name this project? new-sample-app
-? Are you planning to use AWS in your application? Yes
-? Would you like to use Redis in your application? Yes
-✔ Cloning repository
-✔ Installing dependencies
-✔ Setting up .env
-✔ Reset git history
+npm i -g @intentjs/cli
+intent new my-project
 ```
 
 Once the command has run, you can take a look at the [first project](./first-project.md) to getting it running.
