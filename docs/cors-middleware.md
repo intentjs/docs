@@ -10,7 +10,7 @@ image:
 Cross-Origin Resource Sharing (CORS) is a security feature implemented by web browsers that allows or restricts resources requested from another domain outside the domain from which the first resource was served. It is crucial for APIs that are accessed from web applications hosted on different origins.
 
 ## Configuration Options
-The CORS settings can be modified in the `/config/http.ts` configuration file as follows:
+The CORS settings can be modified in the `config/http.ts` configuration file as follows:
 
 - **origin**: An array of allowed origins. You can specify multiple origins or use `*` to allow all origins. For example:
   ```javascript
