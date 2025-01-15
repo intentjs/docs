@@ -141,7 +141,7 @@ import { HasRoles } from '../decorators';
 export class RoleGuard extends IntentGuard {
   async guard(ctx: ExecutionContext): Promise<boolean> {
     const reflector = ctx.getReflector(); // returns an instance of the Reflector class.
-    const req = ctx.getRequest();
+    const req = ctx.switchToHttp().getRequest();
 
     /** If you are setting the metadata on a method, then you can use the `getFromMethod` method. */
     const requiredRoles = reflector.getFromClass(HasRoles); // returns ['admin']
