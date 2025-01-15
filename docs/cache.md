@@ -66,6 +66,35 @@ export default configNamespace(
 );
 ```
 
+### DiceDB Cache
+
+Intent also supports integration of [DiceDB](https://dicedb.io)(An alternative of Redis with more performance!), you can do so by using the configuration below.
+
+If you would like to configure dicedb cache stores, you can do so like below in `config/cache.ts` file:
+
+```typescript
+import { CacheOptions, configNamespace } from "@intentjs/core";
+
+export default configNamespace(
+  "cache",
+  () =>
+    ({
+      default: "dicedb",
+      stores: {
+        dicedb: {
+          driver: "dicedb",
+          host: process.env.DICEDB_HOST || "127.0.0.1",
+          username: process.env.DICEDB_USERNAME || undefined,
+          password: process.env.DICEDB_PASSWORD || undefined,
+          port: process.env.DICEDB_PORT || 6379,
+          database: process.env.DICEDB_DB || 0,
+          prefix: "intentjs",
+        },
+      },
+    } as CacheOptions)
+);
+```
+
 ## Usage
 
 Intent ships two `Cache` and `CacheStore` utilities to start interacting with the stores. Both are importable from '@intentjs/core'.
