@@ -121,6 +121,15 @@ export default defineConfig({
           { text: "Repository", link: "/databases/repository" },
         ],
       },
+      {
+        text: "Security",
+        items: [
+          {
+            text: "CORS Middleware",
+            link: "/cors-middleware",
+          },
+        ],
+      },
     ],
 
     socialLinks: [
