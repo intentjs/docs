@@ -74,7 +74,9 @@ export default defineConfig({
       },
       {
         text: "Fundamentals",
+        collapsed: true,
         items: [
+          { text: "IntentRC file", link: "intentrc-file" },
           { text: "Configuration", link: "/configuration" },
           { text: "Directory Structure", link: "/directory-structure" },
           { text: "Providers", link: "/providers" },
@@ -85,6 +87,7 @@ export default defineConfig({
       },
       {
         text: "Basics",
+        collapsed: true,
         items: [
           { text: "Controllers", link: "/controllers" },
           { text: "Requests", link: "/requests" },
@@ -100,6 +103,7 @@ export default defineConfig({
       },
       {
         text: "Advance",
+        collapsed: true,
         items: [
           { text: "Console", link: "/console" },
           { text: "Cache", link: "/cache" },
@@ -114,6 +118,7 @@ export default defineConfig({
       },
       {
         text: "Database",
+        collapsed: true,
         items: [
           { text: "Introduction", link: "/databases/getting-started" },
           { text: "Migrations", link: "/databases/migrations" },
@@ -123,6 +128,7 @@ export default defineConfig({
       },
       {
         text: "Security",
+        collapsed: true,
         items: [
           {
             text: "CORS Middleware",
