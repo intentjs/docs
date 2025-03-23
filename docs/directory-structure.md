@@ -57,7 +57,7 @@ node intent make:command updateUser
 
 ### The `events` directory
 
-The `events` directory contains all of your event classes. This directory doesn't exist by default and get s created when you create your first event. These events may be generated using `make:event` command. To read more about what Events offer, [read here](https://tryintent.com/docs/events).
+The `events` directory contains all of your event classes. This directory doesn't exist by default and gets created when you create your first event. These events may be generated using `make:event` command. To read more about what Events offer, [read here](https://tryintent.com/docs/events).
 
 ```bash
 node intent make:event order_placed
