@@ -6,11 +6,11 @@ image:
 
 # Localization
 
-There might be situations where you want to change the text sent to the client as per their chosen locale, this is where localization feature by Intent will help you. It comes with a ridiculosly simple API to use it.
+There might be situations where you want to change the text sent to the client as per their chosen locale, this is where localization feature by Intent will help you. It comes with a ridiculously simple API to use it.
 
 Intent provides a convenient way to retrieve strings in various languages, allowing you to easily support multiple languages within your application.
 
-Language strings are be stored in `json` files within the a single directory `resources/lang` by default, but you are free to change it as per your need. Within this directory, the translation strings are to be defined in JSON files. Each language supported by your application would have a corresponding JSON file within this directory. This approach is recommended for application's that have a large number of translatable strings.
+Language strings are stored in `json` files within the a single directory `resources/lang` by default, but you are free to change it as per your need. Within this directory, the translation strings are to be defined in JSON files. Each language supported by your application would have a corresponding JSON file within this directory. This approach is recommended for application's that have a large number of translatable strings.
 
 Languages and their corresponding `.json` files are identified by their <Link href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" className='text-primary'>ISO-639-1</Link> codes.
 

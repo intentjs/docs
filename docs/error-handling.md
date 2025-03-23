@@ -5,7 +5,7 @@ image:
 ---
 # Error Handling
 
-Intent comes with a base `ExceptionHandler` which you can use to handle most of your errors that will ever happen inside during your request-response lifecycle. When you create a new app, it comes with an HTTP Exception Filter which you can customise as per your need. You can make changes to the `handleHttp` method as per your need.
+Intent comes with a base `ExceptionHandler` which you can use to handle most of your errors that will ever happen inside during your request-response lifecycle. When you create a new app, it comes with an HTTP Exception Filter which you can customize as per your need. You can make changes to the `handleHttp` method as per your need.
 
 When you start a new Intent application, it comes pre-configured with an `ApplicationExceptionFilter` located inside `app/errors/filter.ts` directory.
 
@@ -43,7 +43,7 @@ export default configNamespace(
 The `debug` option in `config/app.ts` file determines how much information shall be exposed in the response. By default, this settings is based on `APP_DEBUG` environment variable.
 
 ### Validation Error Serializer
-Using the `validationErrorSerializer` config you can customise the validation error object which is passed to the client whenever there is a `422` exception.
+Using the `validationErrorSerializer` config you can customize the validation error object which is passed to the client whenever there is a `422` exception.
 
 Intent comes with a default serializer `ValidationErrorSerializer` which should be good enough, however you can change it by providing your own custom class.
 

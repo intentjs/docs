@@ -13,7 +13,7 @@ Transformer provides a presentation and transformation layer for complex data ou
 
 To start using transformers, you need to create a transformer class, say `BookTransformer` which extends the abstract `Transformer` imported from `@intentjs/core`.
 
-Let's create a `BookTransformer` for a model, say `Book`.
+Lets create a `BookTransformer` for a model, say `Book`.
 
 ```ts
 // src/transformers/book.ts
@@ -112,7 +112,7 @@ Notice the "author" inside the `availableIncludes` and `includeAuthor` method, t
 Now to use the include the `author` option, we need to pass the `include` query params in the URL, like: `/books/75442486-0878-440c-9db1-a7006c25a39f?include=author`
 
 :::info
-  Bonus For multiple includes, send comma seperated include options like
+  Bonus For multiple includes, send comma separated include options like
   include=author,publisher,launchDetails
 :::
 
@@ -181,7 +181,7 @@ Now, inside the `AuthorTransformer`, you can simply add a new include, `rating`.
 
 ## Transformable
 
-We have also added a simple `Transforamable` utility class which you can use to avoid the manual invocations of your transformers. Simply extend `Transformable` wherever you want to use transformers. Moreover, it provides methods for transforming single object, arrays and custom payload with meta informations.
+We have also added a simple `Transformable` utility class which you can use to avoid the manual invocations of your transformers. Simply extend `Transformable` wherever you want to use transformers. Moreover, it provides methods for transforming single object, arrays and custom payload with meta informations.
 
 Here's how you can do it
 

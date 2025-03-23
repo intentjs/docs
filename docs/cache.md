@@ -165,7 +165,7 @@ await CacheStore().set("books", books, 120);
 To read data from a store, you can make use of the `get` method.
 
 :::info
-If you pass a class instance to the `get` method, it is converted to Plain Old Javascript Object (POJO), and stored as a string. When you 
+If you pass a class instance to the `get` method, it is converted to Plain Old Javascript Object (POJO), and stored as a string.
 :::
 
 ```typescript
