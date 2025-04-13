@@ -1,7 +1,8 @@
 ---
-title: Events
-description:
-image:
+title: Events in Intent.js - Event-Driven Architecture Made Simple
+description: Learn how to implement event-driven architecture in Intent.js applications. Master event dispatching, listeners, and queueable events with practical examples. Perfect for decoupling business logic and building scalable applications.
+keywords: Intent.js events, event-driven architecture, event listeners, queueable events, observer pattern, event dispatching, application events
+image: /images/events-management.png
 ---
 # Events
 
@@ -29,7 +30,7 @@ node intent make:listener order_placed --event=order_placed
 This would generate the following files and classes.
 
 ```ts filename="app/events/orderPlacedEvent.ts"
-import { EmitsEvent, Event } from '@intentjs/core';
+import { EmitsEvent, Event } from '@intentjs/core/events';
 
 @Event('order_placed')
 export class OrderPlacedEvent extends EmitsEvent {
@@ -40,7 +41,8 @@ export class OrderPlacedEvent extends EmitsEvent {
 ```
 
 ```ts filename="app/events/listeners/orderPlacedListener.ts"
-import { Injectable, ListensTo } from '@intentjs/core';
+import { Injectable } from '@intentjs/core';
+import { ListensTo } from '@intentjs/core/events';
 
 @Injectable()
 export class OrderPlacedListener {
@@ -58,7 +60,7 @@ Also, the listener class automatically gets registered inside the `module.ts` fi
 To create an event class, you can create a class similar to below inside the `app/events` directory. An event class is a data container which holds the information related to the event
 
 ```ts filename="app/events/orderPlacedEvent.ts"
-import { EmitsEvent, Event } from '@intentjs/core';
+import { EmitsEvent, Event } from '@intentjs/core/events';
 
 @Event('order_placed')
 export class OrderPlacedEvent extends EmitsEvent {
@@ -79,7 +81,8 @@ All of the listeners only receive the normalised form of the all the data passed
 :::
 
 ```ts filename="app/events/listeners/orderPlacedListener.ts"
-import { Injectable, ListensTo } from '@intentjs/core';
+import { Injectable } from '@intentjs/core';
+import { ListensTo } from '@intentjs/core/events';
 
 @Injectable()
 export class OrderPlacedListener {
@@ -126,7 +129,7 @@ event.emitUnless(condition);
 For a better readability, Intent also ships and `Emit` method which accepts multiple events which can emit simulataneously.
 
 ```typescript
-import { Emit } from '@intentjs/core';
+import { Emit } from '@intentjs/core/events';
 
 Emit(
   new OrderPlacedEvent(order);
@@ -137,7 +140,7 @@ Emit(
 Similar to the `emitIf` and `emitUnless` method, you can use also `EmitIf` and `EmitUnless` methods to conditionally dispatch your events. The only change in this is that you pass the condition as the first logic. This helper method helps you avoid the `condition` multiple times.
 
 ```typescript
-import { Emit, EmitUnless } from '@intentjs/core';
+import { Emit, EmitUnless } from '@intentjs/core/events';
 
 EmitIf(
   condition,
@@ -161,7 +164,7 @@ Making an events queueable means it will be processed automatically via the conf
 Doing so, you may define `connection`, `queue`, or `delay` properties.
 
 ```typescript
-import { Event, QueueableEvent } from "@intentjs/core";
+import { Event, QueueableEvent } from "@intentjs/core/events";
 
 export class OrderPlacedEvent extends Event implements QueueableEvent {
   /**
