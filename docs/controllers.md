@@ -1,6 +1,7 @@
 ---
 title: Controllers
-description:
+description: Learn how to create and manage controllers in IntentJS, including routing, request handling, and best practices for building RESTful endpoints.
+keywords: controllers, routing, HTTP methods, request handling, decorators, route parameters, request payload, hyper-express, middleware, guards
 image:
 ---
 # Controllers
