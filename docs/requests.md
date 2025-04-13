@@ -1,6 +1,7 @@
 ---
 title: Requests
-description: Using Requests inside IntentJS Controllers
+description: Learn how to handle HTTP requests in IntentJS controllers, including accessing request data, route parameters, query parameters, headers, and creating custom request decorators.
+keywords: HTTP requests, request handling, route parameters, query parameters, request body, headers, DTOs, custom decorators, request methods, content types
 image:
 ---
 # Requests
@@ -20,10 +21,10 @@ Out of the box Intent supports following `Content-Type`.
 
 ## Using the Request
 
-To get the `Request` object, you will need to type-hint the `Request` class from `@intentjs/core`. The incoming request will automatically be injected into the controller's method.
+To get the `Request` object, you will need to type-hint the `Request` class from `@intentjs/core/http`. The incoming request will automatically be injected into the controller's method.
 
 ```ts
-import { Req, Request, Controller } from '@intentjs/core';
+import { Req, Request, Controller } from '@intentjs/core/http';
 
 @Controller('books')
 export class BookController {
@@ -207,7 +208,7 @@ async get(@BufferBody() bufferBody: Buffer) {
 If you would like to make your own route param decorator, you could do so easily by making use of the `createParamDecorator` function.
 
 ```ts [app/http/decorators.ts]
-import { createParamDecorator, ExecutionContext } from '@intentjs/core';
+import { createParamDecorator, ExecutionContext } from '@intentjs/core/http';
 
 export const CustomParam = createParamDecorator(
   (data: any, ctx: ExecutionContext, argIndex: number) => {
