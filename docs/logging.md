@@ -1,6 +1,7 @@
 ---
 title: Logging
-description: A usef
+description: Learn how to implement robust logging in your IntentJS application using the winston-based logging framework, including log levels, transports, and formats.
+keywords: logging, winston, log levels, transports, formats, console logging, file logging, HTTP logging, stream logging, debug mode
 image:
 ---
 
@@ -60,7 +61,7 @@ To set the log level in your application, you can make use of the `LogLevel` enu
 |Level|Description|
 |---|---|
 |`error`|Whenever you encounter any Exception preventing one or more functionalities from properly functioning and want to log the information about that event|
-|`warn`|The log level that indicates that something unexpected happened in the application, a problem, or a situation that might disturb one of the processes. But that doesn’t mean that the application failed|
+|`warn`|The log level that indicates that something unexpected happened in the application, a problem, or a situation that might disturb one of the processes. But that doesn't mean that the application failed|
 |`info`| The standard log level for logs indicating something happened,the application entered a certain state, some API called, etc.|
 |`http`| This level is used to log HTTP request-related messages. HTTP transactions ranging from the host, path, response, requests, etc.|
 |`verbose`| The Verbose level logs a message for both the activity start and end, plus the values of the variables and arguments that are used.|
