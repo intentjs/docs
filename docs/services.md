@@ -35,7 +35,7 @@ After creating the `Injectable` class, you will now need to register it inside t
 
 ```ts
 import { ServiceProvider } from '@intentjs/core';
-import { UserService } from 'app/services/user';
+import { UserService } from '#services/user';
 
 export class AppServiceProvider extends ServiceProvider {
   register() {
@@ -48,7 +48,7 @@ After these two steps, we can inject the `UserService` inside the `UserControlle
 
 ```ts
 import { Controller, Get, Req, Request } from '@intentjs/core';
-import { UserService } from 'app/services/userService';
+import { UserService } from '#services/user';
 
 @Controller('/users')
 export class UserController {
