@@ -1,6 +1,7 @@
 ---
 title: Service Providers
-description:
+description: Learn how to create and use Service Providers in IntentJS applications to register and bootstrap services, controllers, and other injectable classes.
+keywords: service providers, dependency injection, application bootstrapping, register method, boot method, bind method, bindWithClass, application container
 image:
 ---
 
