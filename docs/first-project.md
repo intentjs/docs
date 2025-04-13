@@ -1,6 +1,7 @@
 ---
 title: First Project
-description: Protecting REST APIs by using guards inside your Intent application
+description: Learn how to set up your first IntentJS project, configure environment variables, and run it locally or in production with TypeScript.
+keywords: project setup, IntentJS installation, environment configuration, TypeScript, Node.js, development server, production deployment, linting, formatting
 image:
 ---
 # First Project
