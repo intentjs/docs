@@ -3,9 +3,9 @@ title: Providers
 description:
 image:
 ---
-# Providers
+# Services
 
-Providers are an essential concept in Intent, they reuse the same providers that are avaialble in NestJS. Many of the classes that you see here like
+Services are an essential concept in Intent, they reuse the same providers that are avaialble in NestJS. Many of the classes that you see here like
 Services, Repositories, Console Commands, Jobs, etc, all of them are providers. The main idea of providers is that it can be injected as a dependency inside another `Injectable` class.
 This means that the objects can create various relationships with each other, and the responsibility of "wiring up" can be delegated to Nest runtime system.
 
