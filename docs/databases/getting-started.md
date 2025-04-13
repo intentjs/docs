@@ -6,9 +6,9 @@ image:
 
 # Database
 
-Intent comes integrated with support for database by default. It is made possible with the ORM \`ObjectionJS\`.
+Intent comes integrated with support for database by default. It is made possible with the ORM `ObjectionJS`.
 
-`ObjectionJS` provides very clean and fluent APIs to build and run complex queries at ease. We have worked in the past with many ORMs, but `ObjectionJS` stood out, it is relatively young but more mature in terms of its offerings.
+ObjectionJS provides very clean and fluent APIs to build and run complex queries at ease. We have worked in the past with many ORMs, but ObjectionJS stood out, it is relatively young but more mature in terms of its offerings.
 
 ### Features ObjectionJS provides
 

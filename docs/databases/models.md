@@ -22,10 +22,10 @@ We have added a `BaseModel` which you can use to create your models.
 Let's take a look at how to create our own model.
 
 ```typescript
-import { BaseModel } from "@intentjs/core";
+import { BaseModel } from '@intentjs/core/db';
 
 export class UserModel extends BaseModel {
-  static tableName = "users";
+  static tableName = 'users';
 }
 ```
 
@@ -42,11 +42,11 @@ Currently, only repositories support multiple connections. Querying models direc
 The repository will automatically read `connection` property and use the specified connection. :::
 
 ```typescript
-import { BaseModel } from "@intentjs/core";
+import { BaseModel } from '@intentjs/core/db';
 
 export class UserModel extends BaseModel {
-  static tableName = "users";
-  static connection = "postgres";
+  static tableName = 'users';
+  static connection = 'postgres';
 }
 ```
 
