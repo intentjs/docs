@@ -1,5 +1,5 @@
 ---
-title: Events in Intent.js - Event-Driven Architecture Made Simple
+title: Event Listeners
 description: Learn how to implement event-driven architecture in Intent.js applications. Master event dispatching, listeners, and queueable events with practical examples. Perfect for decoupling business logic and building scalable applications.
 keywords: Intent.js events, event-driven architecture, event listeners, queueable events, observer pattern, event dispatching, application events
 image: /images/events-management.png

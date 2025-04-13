@@ -1,5 +1,5 @@
 ---
-title: Console
+title: Console Commands
 description:
 image:
 ---

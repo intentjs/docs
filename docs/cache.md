@@ -1,5 +1,5 @@
 ---
-title: Cache Management in Intent.js - Fast and Efficient Data Caching
+title: Cache (Data Caching)
 description: Master Intent.js caching with our comprehensive guide. Learn to implement local, Redis, and DiceDB cache stores, optimize performance, and follow best practices for efficient data management. Includes practical examples and real-world use cases.
 keywords: Intent.js cache, Redis cache, local cache, DiceDB cache, caching best practices, performance optimization, data caching, cache management
 image:

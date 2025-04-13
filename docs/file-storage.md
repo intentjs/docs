@@ -1,10 +1,8 @@
 ---
 title: Storage
-description: >-
-  Intent provides a useful file storage abstraction for various file systems
-  like Local (Linux, Mac, Windows), AWS S3. It provides
-  simple drivers to work with your files.
-image:
+description: Master file storage in Intent.js with our comprehensive guide to local and AWS S3 storage solutions. Learn disk management, file operations, and dynamic storage configuration with practical examples for efficient file handling.
+keywords: Intent.js storage, file storage, AWS S3 storage, local storage, disk management, file operations, storage configuration
+image: /images/storage-management.png
 ---
 
 # File Storage
