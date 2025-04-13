@@ -1,7 +1,8 @@
 ---
 title: Helpers
-description:
-image:
+description: Explore Intent.js helper utilities for arrays, objects, numbers, and strings. Streamline your code with powerful methods for data manipulation, formatting, and validation. Includes comprehensive examples for all helper functions.
+keywords: Intent.js helpers, array helpers, object helpers, number helpers, string helpers, data manipulation, code utilities, JavaScript helpers
+image: /images/helpers-management.png
 ---
 
 <script setup>
@@ -341,14 +342,14 @@ Obj.pick(obj, ["firstName", "lastName", "wishlist.*.id"]);
 
 ## Number Helper Methods
 
-All of the number helpers are exported from `import { Num } from '@intentjs/core'`
+All of the number helpers are exported from `import { Num } from '@intentjs/core/helpers'`
 
 ### abbreviate {#num-abbreviate}
 
 The abbreviate method returns the human-readable format of the provided numerical value.
 
 ```typescript
-import { Num } from "@intentjs/core";
+import { Num } from "@intentjs/core/helpers";
 
 Num.abbreviate(1000);
 // 1K

@@ -1,5 +1,5 @@
 ---
-title: Storage
+title: Storage (File Management)
 description: Master file storage in Intent.js with our comprehensive guide to local and AWS S3 storage solutions. Learn disk management, file operations, and dynamic storage configuration with practical examples for efficient file handling.
 keywords: Intent.js storage, file storage, AWS S3 storage, local storage, disk management, file operations, storage configuration
 image: /images/storage-management.png
