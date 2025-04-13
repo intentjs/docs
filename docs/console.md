@@ -43,10 +43,10 @@ import { Injectable } from '@intentjs/core';
 import { Command, ConsoleIO } from '@intentjs/core/console';
 
 @Injectable()
-@Command("hello {name=world}", { desc: "Test Command" })
+@Command('hello {name=world}', { desc: 'Test Command' })
 export class HelloWorldCommand {
   async handle(_cli: ConsoleIO): Promise<void> {
-    const name = _cli.argument<string>("name");
+    const name = _cli.argument<string>('name');
     _cli.info(`Hello ${name}!`);
     return;
   }
@@ -59,13 +59,13 @@ You can also use `@Command` decorator on the method.
 
 ```ts
 import { Injectable } from '@intentjs/core';
-import { Command, ConsoleIO } from "@intentjs/core/console";
+import { Command, ConsoleIO } from '@intentjs/core/console';
 
 @Injectable()
 export class HelloWorldCommand {
-  @Command("hello", { desc: "Test Command" })
+  @Command('hello', { desc: 'Test Command' })
   sayHello(_cli: ConsoleIO) {
-    const name = _cli.ask<string>("name");
+    const name = _cli.ask<string>('name');
     _cli.info(`Hello ${name}!`);
     return;
   }
@@ -75,7 +75,7 @@ export class HelloWorldCommand {
 After creating the command, we need to now register it inside the app module.
 
 ```ts
-import { HelloWorldCommand } from "./commands";
+import { HelloWorldCommand } from './commands';
 @Module({
   providers: [HelloWorldCommand];
 })
@@ -117,7 +117,7 @@ You can use the `argument` method from the `ConsoleIO` helper to retrieve the in
 
 ```typescript
 async handle(_cli: ConsoleIO): Promise<void> {
-  const name = _cli.argument<string>("name");
+  const name = _cli.argument<string>('name');
 }
 ```
 
@@ -135,7 +135,7 @@ Now, if you don't pass any argument while invoking the `hello` command, you will
 In case you want to define an argument as of type array, you can simply add `* (asterik)` at the end of the argument.
 
 ```
-"hello {name*}"
+'hello {name*}'
 ```
 
 Now, all the values that you pass to the command, it will be collected under the `name` argument array.
@@ -143,7 +143,7 @@ Now, all the values that you pass to the command, it will be collected under the
 If you want to make your arguments more declarative, or if you want to show the reference (manual) of the command on the console. You can also define description of each argument like mentioned below. Whatever sentence you write after `:` delimitter, it would be treated as description.
 
 ```ts
-"hello {name : Name of the person to greet}";
+'hello {name : Name of the person to greet}';
 ```
 
 Now try running the command with `--help` flag, you should see the description against the argument.
@@ -172,7 +172,7 @@ node intent hello --name=vinayak
 To read the value from the console in your command, you can make use of the `option` method present inside the `ConsoleIO`.
 
 ```ts
-const name = _cli.option<string>("name");
+const name = _cli.option<string>('name');
 ```
 
 To pass array of values in any options or arguments, you can simply add an `* (asterik)`.
@@ -211,7 +211,7 @@ node intent hello -n vinayak
 Similar to arguments, you can also define description of the option.
 
 ```typescript
-"hello {--n|name : Name of the person to greet}";
+'hello {--n|name : Name of the person to greet}';
 ```
 
 Now try running the command with `--help` flag, you should see the description against the argument.
@@ -225,13 +225,13 @@ While executing command, you will need to fetch the values that you may have pas
 For fetching an argument, you can do
 
 ```typescript
-const type = _cli.argument<string>("type");
+const type = _cli.argument<string>('type');
 ```
 
 For fetching an option, you can do
 
 ```typescript
-const email = _cli.option<string>("email");
+const email = _cli.option<string>('email');
 ```
 
 If no value is passed, the `argument` and `option` function will return the default value or `null` value.
@@ -243,13 +243,13 @@ You may want to ask for input while executing a command. We provide several ways
 To ask for simple input from the user, you can call `ask()` method.
 
 ```typescript
-const name = _cli.ask("name");
+const name = _cli.ask('name');
 ```
 
 You may want to ask user about some secret or any password, which ideally should not get printed on the console.
 
 ```typescript
-const password = await _cli.password("Enter your pasword to continue");
+const password = await _cli.password('Enter your pasword to continue');
 ```
 
 While running a command, you can also give choices to select from a defined list. For example:
@@ -260,8 +260,8 @@ While running a command, you can also give choices to select from a defined list
  * Returns one of the passed choices.
  */
 const choice = await _cli.select(
-  "Please select one superhero", // question
-  ["Batman", "Ironman"], // choices
+  'Please select one superhero', // question
+  ['Batman', 'Ironman'], // choices
   false // multiple?
 );
 
@@ -269,16 +269,16 @@ const choice = await _cli.select(
  * Multiple choices example.
  * Returns an array of the selected options.
  */
-const choice = await _cli.multiSelect("Please select one superhero", [
-  "Batman",
-  "Ironman",
+const choice = await _cli.multiSelect('Please select one superhero', [
+  'Batman',
+  'Ironman',
 ]);
 ```
 
 Lastly, sometimes you may want to ask for confirmation from the user before doing any execution. You can do so by using `confirm` method.
 
 ```typescript
-const confirm = await _cli.confirm("Do you really wish to continue?");
+const confirm = await _cli.confirm('Do you really wish to continue?');
 if (confirm) {
   // do your magic here
 }
@@ -291,19 +291,19 @@ Till now, we have seen how we can operate with differnt type of inputs on the cl
 To print any message on the console, use `info` method
 
 ```typescript
-_cli.info("Some amazing message"); // Outputs 'Some amazing message' on the console
+_cli.info('Some amazing message'); // Outputs 'Some amazing message' on the console
 ```
 
 Incase of an error message, use `error` method.
 
 ```typescript
-_cli.error("Oops! Something went wrong.");
+_cli.error('Oops! Something went wrong.');
 ```
 
 Similarly, to print any success message, use `success` method
 
 ```typescript
-_cli.success("Wohoo! The command worked just fine!");
+_cli.success('Wohoo! The command worked just fine!');
 ```
 
 To print a divider on the console, simple do
@@ -317,10 +317,10 @@ To print a table on the console, you can use `table` method:
 ```typescript
 // this will automatically print unicode table on the console
 _cli.table(
-  ["Name", "Designation"],
+  ['Name', 'Designation'],
   [
-    { name: "User 1", designation: "Software Engineer L1" },
-    { name: "User 2", designation: "Software Engineer L1" },
+    { name: 'User 1', designation: 'Software Engineer L1' },
+    { name: 'User 2', designation: 'Software Engineer L1' },
   ]
 );
 ```
