@@ -42,7 +42,7 @@ For Intent to know, you will need to register the `UserController` inside the th
 
 ```ts
 import { Kernel } from '@intentjs/core';
-import { UserController } from 'app/http/controllers/users';
+import { UserController } from '#http/controllers/users';
 
 export class HttpKernel extends Kernel {
   public controllers(): Type<any>[] {

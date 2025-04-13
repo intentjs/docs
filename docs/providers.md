@@ -118,7 +118,7 @@ Besides Standard Providers, Intent offers four additional providers.
 3. [Factory Providers](#factory-providers)
 4. [Existing Providers](#existing-providers)
 
-### Value Providers [#value-providers]
+### Value Providers
 The `bindWithValue` method is useful for injecting constant value inside Intent container, or replacing an implementation of a real object.
 Let's say you want to force Nest to mock `UserService` for testing purpose.
 
@@ -174,7 +174,7 @@ export class UserService {
 }
 ```
 
-### Class Based Providers [#class-based-providers]
+### Class Based Providers
 
 The `bindWithClass` method allows you to dynamically determine the class to be injected. Suppose, you want to inject different configuration depending on the current
 environment. Let's take a quick look at the example.
@@ -198,7 +198,7 @@ Let's understand this in detail, you will notice that we have used `ConfigServic
 `ConfigService`, Intent will inject an instance of the provided class (`DevelopmentConfigService` or `ProductionConfigService`) overriding any
 default implementation that may have been declared anywhere else.
 
-### Factory Providers [#factory-providers]
+### Factory Providers
 
 The `bindWithFactory` method allows you to create providers dynamically. The actual provider will be supplied by the value
 returned from the factory method. The factory based providers can be simple or complex as needed. A simple factory provider may not depend
@@ -227,7 +227,7 @@ export class AppServiceProvider extends ServiceProvider {
 }
 ```
 
-### Existing Providers [#existing-providers]
+### Existing Providers
 
 There can be cases where you would want to alias an existing provider with a new token, to do so you can use
 `bindWithExisting` method. Intent will automatically resolve the token `AliasedUserService` with the previously binded

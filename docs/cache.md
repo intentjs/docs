@@ -1,6 +1,7 @@
 ---
-title: Cache
-description:
+title: Cache (Data Caching)
+description: Master Intent.js caching with our comprehensive guide. Learn to implement local, Redis, and DiceDB cache stores, optimize performance, and follow best practices for efficient data management. Includes practical examples and real-world use cases.
+keywords: Intent.js cache, Redis cache, local cache, DiceDB cache, caching best practices, performance optimization, data caching, cache management
 image:
 ---
 # Cache
@@ -20,7 +21,8 @@ Cache configuration is defined in `config/cache.ts` file. By default, Intent com
 Local cache is a zero-dependency store that you can use without starting any extra server.
 
 ```ts
-import { CacheOptions, configNamespace } from "@intentjs/core";
+import { CacheOptions } from '@intentjs/core/cache';
+import { configNamespace } from '@intentjs/core/config';
 
 export default configNamespace(
   "cache",
@@ -44,7 +46,8 @@ For production related workloads, we recommend using an external cache store lik
 If you would like to configure different cache stores, you can do so like below in `config/cache.ts` file:
 
 ```typescript
-import { CacheOptions, configNamespace } from "@intentjs/core";
+import { CacheOptions } from '@intentjs/core/cache';
+import { configNamespace } from '@intentjs/core/config';
 
 export default configNamespace(
   "cache",
@@ -73,7 +76,8 @@ Intent also supports integration of [DiceDB](https://dicedb.io)(An alternative o
 If you would like to configure dicedb cache stores, you can do so like below in `config/cache.ts` file:
 
 ```typescript
-import { CacheOptions, configNamespace } from "@intentjs/core";
+import { CacheOptions } from '@intentjs/core/cache';
+import { configNamespace } from '@intentjs/core/config';
 
 export default configNamespace(
   "cache",
@@ -97,16 +101,18 @@ export default configNamespace(
 
 ## Usage
 
-Intent ships two `Cache` and `CacheStore` utilities to start interacting with the stores. Both are importable from '@intentjs/core'.
+Intent ships two `Cache` and `CacheStore` utilities to start interacting with the stores. Both are imported from '@intentjs/core/cache'.
 
 ```typescript
 // method
-import { CacheStore } from "@intentjs/core";
+import { CacheStore } from '@intentjs/core/cache';
+
 const store = CacheStore();
 // returns the default store
 
 // class
-import { Cache } from "@intentjs/core";
+import { Cache } from '@intentjs/core/cache';
+
 const store = Cache.store();
 // returns the default store
 ```
@@ -114,12 +120,14 @@ const store = Cache.store();
 If you would like to access a store other than the `default` store, you can pass the name of the store as an arg.
 
 ```ts
-import { CacheStore } from "@intentjs/core";
+import { CacheStore } from '@intentjs/core/cache';
+
 const store = CacheStore("redis");
 // returns the "redis" store
 
 // class
-import { Cache } from "@intentjs/core";
+import { Cache } from "@intentjs/core/cache";
+
 const store = Cache.store("local");
 // returns the "local" store
 ```

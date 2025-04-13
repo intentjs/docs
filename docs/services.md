@@ -3,9 +3,9 @@ title: Providers
 description:
 image:
 ---
-# Providers
+# Services
 
-Providers are an essential concept in Intent, they reuse the same providers that are avaialble in NestJS. Many of the classes that you see here like
+Services are an essential concept in Intent, they reuse the same providers that are avaialble in NestJS. Many of the classes that you see here like
 Services, Repositories, Console Commands, Jobs, etc, all of them are providers. The main idea of providers is that it can be injected as a dependency inside another `Injectable` class.
 This means that the objects can create various relationships with each other, and the responsibility of "wiring up" can be delegated to Nest runtime system.
 
@@ -35,7 +35,7 @@ After creating the `Injectable` class, you will now need to register it inside t
 
 ```ts
 import { ServiceProvider } from '@intentjs/core';
-import { UserService } from 'app/services/user';
+import { UserService } from '#services/user';
 
 export class AppServiceProvider extends ServiceProvider {
   register() {
@@ -48,7 +48,7 @@ After these two steps, we can inject the `UserService` inside the `UserControlle
 
 ```ts
 import { Controller, Get, Req, Request } from '@intentjs/core';
-import { UserService } from 'app/services/userService';
+import { UserService } from '#services/user';
 
 @Controller('/users')
 export class UserController {

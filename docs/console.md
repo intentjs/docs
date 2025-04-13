@@ -1,5 +1,5 @@
 ---
-title: Console
+title: Console Commands
 description:
 image:
 ---
@@ -36,10 +36,11 @@ This command will automatically create a `newCommand.ts` file in `commands` dire
 
 ### Using Class
 
-You can create an injectable class and use `@Command` decorator on it. The package will automatically look for `handle` method inside the class.
+You can create an injectable class and use `@Command()` decorator on it. The package will automatically look for `handle` method inside the class.
 
 ```typescript
-import { Injectable, Command, ConsoleIO } from "@intentjs/core";
+import { Injectable } from '@intentjs/core';
+import { Command, ConsoleIO } from '@intentjs/core/console';
 
 @Injectable()
 @Command("hello {name=world}", { desc: "Test Command" })
@@ -57,7 +58,8 @@ export class HelloWorldCommand {
 You can also use `@Command` decorator on the method.
 
 ```ts
-import { Injectable, Command, ConsoleIO } from "@intentjs/core";
+import { Injectable } from '@intentjs/core';
+import { Command, ConsoleIO } from "@intentjs/core/console";
 
 @Injectable()
 export class HelloWorldCommand {

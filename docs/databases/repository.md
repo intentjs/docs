@@ -34,8 +34,9 @@ If you notice, you can clearly see the abstraction happening under the hood. Whi
 In IntentJS application, creating your own repository is pretty straight forward. You can create your own repo like below
 
 ```typescript
-import { Injectable, UserModel } from "../models/user";
-
+import { Injectable } from "@intentjs/core";
+import { DatabaseRepository} from '@intentjs/core/db';
+import { UserModel } from '#models/user';
 @Injectable()
 export class UserRepository<UserModel> extends DatabaseRepository<UserModel> {
   @InjectModel(UserModel)

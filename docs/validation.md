@@ -39,7 +39,7 @@ For available validation decorators, you can refer to the[ \`class-validator\` ]
 Now that you have the schema ready, we will need to validate it. To do so, you can make use of the `Validator` class.
 
 ```typescript
-import { Validator } from "@intentjs/core";
+import { Validator } from "@intentjs/core/validator";
 
 const validator = Validator.compareWith(CreateBookDto);
 ```
@@ -48,8 +48,8 @@ Inside the `compareWith` method we are passing the schema that we created previo
 
 ```ts
 await validator.validate({
-    name: 'Get Epic Shit Done',
-    author: 'Ankur Warikoo'
+  name: 'Get Epic Shit Done',
+  author: 'Ankur Warikoo'
 });
 ```
 
@@ -128,7 +128,8 @@ export class BookController {
 You can also make use of the `Validate` decorator to automatically validate the incoming request. And if you want the instance of the validated schema, you can make use of the `Dto` decorator. Let's look at an example below:
 
 ```typescript
-import { Validate, Dto } from "@intentjs/core";
+import { Body } from '@intentjs/core/http';
+import { Validate } from '@intentjs/core/validator';
 
 @Controller()
 export class BookController {

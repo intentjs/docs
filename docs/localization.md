@@ -1,6 +1,7 @@
 ---
 title: Localization
-description:
+description: Implement multi-language support in Intent.js applications with our comprehensive localization guide. Learn to manage translations, handle pluralization, and format content for global audiences with practical examples and best practices.
+keywords: Intent.js localization, internationalization, i18n, multi-language support, translations, pluralization, language formatting, global applications
 image:
 ---
 
@@ -30,7 +31,7 @@ Recommended directory structure :
 The configuration for localization is stored at `config/locale.ts`.
 
 ```ts
-import { configNamespace } from "@intentjs/core";
+import { configNamespace } from "@intentjs/core/config";
 
 export default configNamespace("localization", () => ({
   fallbackLang: "en",
@@ -86,7 +87,7 @@ You can retrieve translation strings from your language files using the `__` hel
 You can use the dot `.` notation to refer to nested strings. Let's take a look at different ways of retrieving the values.
 
 ```ts
-import { __ } from "@intentjs/core";
+import { __ } from "@intentjs/core/locale";
 
 __("quote");
 // If your dreams do not scare you, they are already becoming a reality.

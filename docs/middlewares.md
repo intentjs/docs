@@ -23,9 +23,10 @@ access the context of route handler, you can take a look at [Guards](./guards.md
 To create a middleware, let's create a file `api-key-middleware.ts` inside the `app/http/middlewares` directory, you will need to create a class like shown below inside the file we just created.
 
 ```ts
-import { IntentMiddleware, Request, Response, MiddlewareNext } from '@intentjs/core';
+import { HttpMiddleware } from '@intentjs/core/http';
+import { MiddlewareNext, Request, Response } from '@intentjs/hyper-express'; 
 
-export class ApiKeyMiddleware extends IntentMiddleware {
+export class ApiKeyMiddleware extends HttpMiddleware {
   use(req: Request, res: Response, next: MiddlewareNext): void {
     const payload = req.all();
     // your code here.
@@ -37,9 +38,10 @@ export class ApiKeyMiddleware extends IntentMiddleware {
 By default nature of the middleware is supposed to be synchronous, but if would like to make an asynchronous middleware then you don't need to call the `next` method.
 
 ```ts
-import { IntentMiddleware, Request, Response, MiddlewareNext } from '@intentjs/core';
+import { HttpMiddleware } from '@intentjs/core/http';
+import { MiddlewareNext, Request, Response } from '@intentjs/hyper-express'; 
 
-export class ApiKeyMiddleware extends IntentMiddleware {
+export class ApiKeyMiddleware extends HttpMiddleware {
   async use(req: Request, res: Response, next: MiddlewareNext): Promise<void> {
     new Promise((resolve, reject) => {
       // your code here
@@ -54,14 +56,14 @@ We will write our logic inside the `use` method, which will run whenever there i
 Middlewares are fully compatible with our application containers and service providers, which means you can inject some dependencies inside the `ApiKeyMiddleware` like below.
 
 ```ts
-import { IntentMiddleware, Request, Response } from '@intentjs/core';
-import { NextFunction } from 'express';
+import { HttpMiddleware } from '@intentjs/core/http';
+import { MiddlewareNext, Request, Response } from '@intentjs/hyper-express'; 
 
 @Injectable()
-export class ApiKeyMiddleware extends IntentMiddleware {
+export class ApiKeyMiddleware extends HttpMiddleware {
   constructor(private service: UserService) {}
 
-  async use(req: Request, res: Response, next: NextFunction): Promise<void> {
+  async use(req: Request, res: Response, next: MiddlewareNext): Promise<void> {
     next();
   }
 }
@@ -81,7 +83,8 @@ async use(req: Request, res: Response, next: NextFunction): Promise<void> {
 
 ## Applying Middlewares
 
-Now, after you are done with creating the middleware, you will now need to start using it. Intent supports following type of applications for the middlewares,
+After you are done creating the middlewares, we will now need to start applying it to our controllers.
+Intent supports following type of applications for the middlewares,
 
 1. Global Middleware - gets applied on all incoming routes
 2. Route Based Middleware - gets applied on specific routes, group of routes, or excluding some routes.
@@ -89,8 +92,15 @@ Now, after you are done with creating the middleware, you will now need to start
 To apply the middleware globally, you can simply add the `ApiKeyMiddleware` we built in the `app/http/kernel.ts`.
 
 ```ts
-import { Kernel, IntentMiddleware, Type, } from '@intentjs/core';
-import { ApiKeyMiddleware } from './Middlewares/api-key';
+import {
+  CorsMiddleware,
+  HttpGuard,
+  HttpMethods,
+  HttpMiddleware,
+  Kernel,
+  MiddlewareConfigurator,
+} from '@intentjs/core/http';
+import { ApiKeyMiddleware } from '#http/middlewares/api-key';
 
 export class HttpKernel extends Kernel {
   /**
@@ -98,7 +108,7 @@ export class HttpKernel extends Kernel {
    * Middlewares added in the return array will be
    * applied to all routes by default.
    */
-  public middlewares(): Type<IntentMiddleware>[] {
+  public middlewares(): Type<HttpMiddleware>[] {
     return [
       // existing middlewares here...
       ApiKeyMiddleware
@@ -110,14 +120,14 @@ export class HttpKernel extends Kernel {
 What if you don't want to apply a middleware globally, and instead just apply it on certain routes. For this, you can simply use the `routeMiddlewares` available inside the `Kernel` class.
 
 ```ts [app/http/kernel.ts]
-import { Kernel, IntentMiddleware, Type, MiddlewareConfigurator } from '@intentjs/core';
-import { ApiKeyMiddleware } from './middlewares/api-key';
+import { Kernel, HttpMiddleware, Type, MiddlewareConfigurator } from '@intentjs/core/http';
+import { ApiKeyMiddleware } from '#http/middlewares/api-key';
 
 export class HttpKernel extends Kernel {
   /**
    * Register all of your route specific middlewares here.
    */
-  public routeMiddlewares(configurator: MiddlewareConfigurator): Type<IntentMiddleware>[] {
+  public routeMiddlewares(configurator: MiddlewareConfigurator): Type<HttpMiddleware>[] {
     configurator
       .use(ApiKeyMiddleware)
       .for(UserController);

@@ -1,11 +1,10 @@
 ---
-title: Storage
-description: >-
-  Intent provides a useful file storage abstraction for various file systems
-  like Local (Linux, Mac, Windows), AWS S3. It provides
-  simple drivers to work with your files.
-image:
+title: Storage (File Management)
+description: Master file storage in Intent.js with our comprehensive guide to local and AWS S3 storage solutions. Learn disk management, file operations, and dynamic storage configuration with practical examples for efficient file handling.
+keywords: Intent.js storage, file storage, AWS S3 storage, local storage, disk management, file operations, storage configuration
+image: /images/storage-management.png
 ---
+
 # File Storage
 
 Intent provides a useful file storage abstraction for various file systems like `Local (Linux, Mac, Windows)`, `AWS S3`. It provides simple drivers to work with your files. You can easily change your drivers without breaking a sweat, as the APIs remain the same.
@@ -17,8 +16,9 @@ The configuration is stored at `config/filesystem.ts`. By default, a `local` dis
 Below we have explained the different `disk` configurations available which you can use.
 
 ```ts filename="config/filesystem.ts"
+import { configNamespace } from '@intentjs/core/config';
+import { StorageOptions } from '@intentjs/core/storage';
 import { fromIni } from '@aws-sdk/credential-providers';
-import { StorageOption, configNamespace } from '@intentjs/core';
 
 export default configNamespace(
   'filesystem',
@@ -91,19 +91,19 @@ While drivers help you to differentiate between the different storage provides f
 For example: While building an e-commerce application, you may want to handle the uploaded `invoices` and `products` differently. With the helps of different disks configuration, we can easily implement it.
 
 ```typescript
-import { configNamespace } from "@intentjs/core";
+import { configNamespace } from '@intentjs/core';
 
-export default configNamespace("filesystem", () => ({
-  default: "docs",
+export default configNamespace('filesystem', () => ({
+  default: 'docs',
   disks: {
     invoices: { // `invoices` disk, will contain the invoices of all the orders passed so far
-      driver: "s3",
+      driver: 's3',
       bucket: process.env.AWS_S3_DOCS_BUCKET,
       credentials: fromIni({ profile: process.env.AWS_PROFILE }),
       region: process.env.AWS_REGION,
     },
     products: { // `products` disk, will contain photos of all the products
-      driver: "s3",
+      driver: 's3',
       bucket: process.env.AWS_S3_PROFILE_PIC_BUCKET,
       credentials: fromIni({ profile: process.env.AWS_PROFILE }),
       region: process.env.AWS_REGION,
@@ -117,17 +117,17 @@ Above, we have created two different logical partitioning of `invoices`, and `pr
 To switch between the different disks, you can make use of the `disk` method from the `Storage` facade. To access any disk other than the default, you can simply pass the name of the disk to the method.
 
 ```typescript
-import { Storage } from "@intentjs/core";
+import { Storage } from '@intentjs/core/storage';
 
-Storage.disk("invoices"); // return the instance of the `invoices` disk
+Storage.disk('invoices'); // return the instance of the `invoices` disk
 ```
 
 Now let's say, you want to access `products` disk,
 
 ```typescript
-import { Storage } from "@intentjs/core";
+import { Storage } from '@intentjs/core/storage';
 
-Storage.disk("products"); // returns the instance of `products` disk
+Storage.disk('products'); // returns the instance of `products` disk
 ```
 
 ### Dynamic Disks
@@ -135,7 +135,7 @@ Storage.disk("products"); // returns the instance of `products` disk
 If you would like to build disks dynamically, you can do so with the help of `Storage.build` method.
 
 ```ts
-import { Storage } from "@intentjs/core";
+import { Storage } from '@intentjs/core/storage';
 
 const driver = Storage.build({
   driver: 'local',
@@ -153,7 +153,7 @@ Intent comes with very simple APIs to interact with your filesystem. We will see
 For example, to read a file irrespective of the driver, you can use `get` method. The method returns a `Buffer` content of the file.
 
 ```typescript
-await Storage.disk("invoices").get("order_1234.pdf");
+await Storage.disk('invoices').get('order_1234.pdf');
 // returns buffer content of the pdf file.
 ```
 
@@ -179,8 +179,8 @@ To upload the files, we provide several methods which you can use as per your co
 Let's say you want to put a file on a particular path, you can simply do
 
 ```typescript
-await Storage.disk("invoices").put("order_23456.pdf", bufferContent, {
-  mimeType: "application/pdf",
+await Storage.disk('invoices').put('order_23456.pdf', bufferContent, {
+  mimeType: 'application/pdf',
 });
 ```
 
@@ -201,7 +201,7 @@ await Storage.disk().signedUrl('sample.txt', 60, 'put');
 The `delete` method is used for deleting a particular file.
 
 ```ts
-await Storage.disk("invoices").delete("order_23456.pdf");
+await Storage.disk('invoices').delete('order_23456.pdf');
 // returns true if delete is successfull, else false
 ```
 
@@ -236,19 +236,19 @@ Intent also comes packed with some other file operations like checking if a file
 To check if a file exists, you can use the `exists` method.
 
 ```ts
-await Storage.disk("invoices").exists("order_23456.pdf"); // returns true or false
+await Storage.disk('invoices').exists('order_23456.pdf'); // returns true or false
 ```
 
 Alternatively, if you want to check if a file is missing or doesn't exists, you can use the `missing` method.
 
 ```typescript
-await Storage.disk("invoices").missing("order_23456.pdf"); // returns true or false
+await Storage.disk('invoices').missing('order_23456.pdf'); // returns true or false
 ```
 
 If you want the `meta` information related to a file, you can use the `meta` method.
 
 ```typescript
-await Storage.disk("invoices").meta("order_23456.pdf");
+await Storage.disk('invoices').meta('order_23456.pdf');
 /**
   {
     path: 'sample.txt',

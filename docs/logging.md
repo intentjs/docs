@@ -17,7 +17,13 @@ Intent comes with simple methods to store all your application logs in the forma
 By default, all of the configurations for loggers are stored inside `config/logger.ts` . You would see a similar configuration as below
 
 ```ts copy
-import { Formats, LogLevel, Transports, configNamespace } from '@intentjs/core';
+import {
+  Formats,
+  LoggerOptions,
+  LogLevel,
+  Transports,
+} from "@intentjs/core/logger";
+import { configNamespace } from "@intentjs/core/config";
 
 export default configNamespace('logger', () => ({
   default: 'app',
@@ -49,7 +55,7 @@ All of the logs are stored inside `storage/logs` directory.
 Take note of the `level` configuration option. Intent currently supports the [RFC 5424 specification](https://datatracker.ietf.org/doc/html/rfc5424#page-11). This option determins the minimum "level" a message must be in order to be logged.
 Each level is given an integer priority with the most severe being the lowest number and the least one being the highest.
 
-To set the log level in your application, you can make use of the `LogLevel` enum from the `@intentjs/core` package. It currently supports the following levels:
+To set the log level in your application, you can make use of the `LogLevel` enum from the `@intentjs/core/logger` package. It currently supports the following levels:
 
 |Level|Description|
 |---|---|
@@ -110,26 +116,26 @@ transports: [
 
 Intent supports all of the formats that come preconfigured with `wintson`, so you free to use those formats.
 
-To use any of the format mentioned below, you can use `Formats` enum from `@intentjs/core`;
+To use any of the format mentioned below, you can use `Formats` enum from `@intentjs/core/logger`;
 
-`Default`
-`Simple`
-`Align`
-`Cli`
-`Colorize`
-`Combine`
-`Errors`
-`Json`
-`Label`
-`Logstash`
-`Metadata`
-`Ms`
-`PadLevels`
-`PrettyPrint`
-`Printf`
-`Splat`
-`Timestamp`
-`Uncolorize`
+- `Default`
+- `Simple`
+- `Align`
+- `Cli`
+- `Colorize`
+- `Combine`
+- `Errors`
+- `Json`
+- `Label`
+- `Logstash`
+- `Metadata`
+- `Ms`
+- `PadLevels`
+- `PrettyPrint`
+- `Printf`
+- `Splat`
+- `Timestamp`
+- `Uncolorize`
 
 ### Disable Console Log
 If you want to disable console based logs in your non-dev environments, irrespective of the level, transport or format. You can simply set the `disableConsole` value to true.
@@ -143,7 +149,7 @@ disableConsole: true
 You can log almost any type of object. Let's take a simple look at how to do it.
 
 ```ts
-import { Log } from '@intentjs/core';
+import { Log } from '@intentjs/core/logger';
 
 const logger = Log();
 // returns the default logger

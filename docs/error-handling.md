@@ -50,7 +50,6 @@ Intent comes with a default serializer `ValidationErrorSerializer` which should 
 
 ```ts
 import { ValidationError } from 'class-validator';
-import { isEmpty, Str } from '@intentjs/core';
 
 export class CustomValidationErrorSerializer {
   async handle(errors: ValidationError[]): Promise<Record<string, any>> {

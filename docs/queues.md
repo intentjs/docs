@@ -18,12 +18,13 @@ Intent provides powerful and consistent set of APIs for interacting with frequen
 
 All of the queue configurations are stored in the `config/queue.ts` file. By default, `sync` queue is configured. The configuration will be similar to below:
 
-```ts filename="config/queue.ts"
-import { SyncQueueDriver, QueueOptions, configNamespace } from "@intentjs/core";
+```ts filename='config/queue.ts'
+import { configNamespace } from '@intentjs/core/config';
+import { SyncQueueDriver, QueueOptions } from '@intentjs/core/queue';
 
-export default configNamespace("queue", () => {
+export default configNamespace('queue', () => {
   return {
-    default: "notifications",
+    default: 'notifications',
     connections: {
       notifications: {
         driver: 'sync',
@@ -36,12 +37,13 @@ export default configNamespace("queue", () => {
 
 Let's say you want to use `AWS SQS` as your message queue, you can use the below mentioned configuration
 
-```ts filename="config/queue.ts"
-import { SyncQueueDriver, QueueOptions, configNamespace } from "@intentjs/core";
+```ts filename='config/queue.ts'
+import { configNamespace } from '@intentjs/core/config';
+import { SyncQueueDriver, QueueOptions } from '@intentjs/core/queue';
 
-export default configNamespace("queue", () => {
+export default configNamespace('queue', () => {
   return {
-    default: "notifications",
+    default: 'notifications',
     connections: {
       notifications: {
         driver: 'sqs',
@@ -65,8 +67,9 @@ By default all of the jobs are stored inside the `app/jobs` directory.
 
 You will need to create a `notification-jobs.ts` file inside the `app/jobs` directory. Inside the `handle` method you can write your business logic.
 
-```ts filename="app/jobs/notificationJob.ts"
-import { Injectable, Job } from '@intentjs/core';
+```ts filename='app/jobs/notificationJob.ts'
+import { Injectable } from '@intentjs/core';
+import { Job } from '@intentjs/core/queue';
 
 @Injectable()
 export class NotificationJob {
@@ -87,7 +90,7 @@ You can also create jobs manually by adding a `@Job(job_name)` decorator on any 
 We understand that you may have multiple queue connections to handle in your application. While configuring the module, we set `default` connection inside the `config/queue.ts`. Incase, you want to dispatch the job on a different connection, you can do so:
 
 ```typescript
-@Job('notification', { connection: "transactional-emails" })
+@Job('notification', { connection: 'transactional-emails' })
 ```
 
 #### queue
@@ -126,16 +129,17 @@ To dispatch a job, you can make use of the `Dispatch` helper function or `Queue`
 ### Using helper function
 
 ```typescript
-import { Injectable, Dispatch } from "@intentjs/core";
+import { Injectable } from '@intentjs/core';
+import { Dispatch } from '@intentjs/core/queue';
 
 @Injectable()
 export class PaymentService {
   async verify(inputs: Record<string, any>): Promise<Record<string, any>> {
     Dispatch({
-      job: "notification",
+      job: 'notification',
       data: {
-        email: "hi@tryintent.com",
-        subject: "Yay! Your payment is succesful!",
+        email: 'hi@tryintent.com',
+        subject: 'Yay! Your payment is succesful!',
       },
     });
   }
@@ -158,17 +162,18 @@ For example, if you are passing a class instance, that will be converted into a 
 You can use `Queue` class, to dispatch jobs in a more declarative way
 
 ```typescript
-import { Injectable, Queue } from "@intentjs/core";
+import { Injectable } from '@intentjs/core';
+import { Queue } from '@intentjs/core/queue';
 
 @Injectable()
 export class PaymentService {
   async verify(inputs: Record<string, any>): Promise<Record<string, any>> {
     // ...your custom code here
     Queue.dispatch({
-      job: "notification",
+      job: 'notification',
       data: {
-        email: "hi@tryintent.com",
-        subject: "Yay! Your payment is succesful!",
+        email: 'hi@tryintent.com',
+        subject: 'Yay! Your payment is succesful!',
       },
     });
   }
@@ -193,11 +198,11 @@ We understand that you may have multiple queue connections to handle in your app
 
 ```typescript
 Dispatch({
-  job: "notification",
-  connection: "transactional-emails",
+  job: 'notification',
+  connection: 'transactional-emails',
   data: {
-    email: "hi@tryintent.com",
-    subject: "Yay! Your payment is succesful!",
+    email: 'hi@tryintent.com',
+    subject: 'Yay! Your payment is succesful!',
   },
 });
 ```
@@ -208,11 +213,11 @@ If you want to dispatch a job to a different queue but on `default` connection, 
 
 ```typescript
 Dispatch({
-  job: "notification",
-  queue: "payment-emails",
+  job: 'notification',
+  queue: 'payment-emails',
   data: {
-    email: "hi@tryintent.com",
-    subject: "Yay! Your payment is succesful!",
+    email: 'hi@tryintent.com',
+    subject: 'Yay! Your payment is succesful!',
   },
 });
 ```
@@ -223,11 +228,11 @@ This package provides out-of-the-box retrial logic, so that incase if any of the
 
 ```typescript
 Dispatch({
-  job: "notification",
+  job: 'notification',
   tries: 3,
   data: {
-    email: "hi@tryintent.com",
-    subject: "Yay! Your payment is succesful!",
+    email: 'hi@tryintent.com',
+    subject: 'Yay! Your payment is succesful!',
   },
 });
 ```
@@ -240,11 +245,11 @@ There can be some situations where you may want to delay the job for a while. Fo
 
 ```typescript
 Dispatch({
-  job: "notification",
+  job: 'notification',
   delay: 60, // in seconds
   data: {
-    email: "hi@tryintent.com",
-    subject: "Yay! Your payment is succesful!",
+    email: 'hi@tryintent.com',
+    subject: 'Yay! Your payment is succesful!',
   },
 });
 ```
@@ -298,11 +303,11 @@ Following commands are available which you can use with `node intent`
 While the `queue:work` command will be good enough for majority of the cases, however if you want to write your custom `QueueWorker` script, you can make use of `QueueWorker` class, like below.
 
 ```typescript
-import { QueueWorker } from '@intentjs/core';
+import { QueueWorker } from '@intentjs/core/queue';
 
 const worker = QueueWorker.init({
-  connection: "default",
-  queue: "default-queue",
+  connection: 'default',
+  queue: 'default-queue',
   sleep: 10,
 });
 
@@ -366,11 +371,12 @@ npm i @aws-sdk/client-sqs @aws-sdk/credential-providers
 Before using it, you need to configure it first like below:
 
 ```typescript
-import { QueueOptions, SqsDriver, configNamespace } from "@intentjs/core";
+import { configNamespace } from '@intentjs/core/config';
+import { QueueOptions } from '@intentjs/core/queue';
 
-export default configNamespace("queue", () => {
+export default configNamespace('queue', () => {
   return {
-    default: "notifications",
+    default: 'notifications',
     connections: {
       notifications: {
         driver: 'sqs',
@@ -412,11 +418,12 @@ npm i ioredis --save
 Before using it, you need to configure it first like below:
 
 ```typescript
-import { QueueOptions, RedisDriver, configNamespace } from "@intentjs/core";
+import { configNamespace } from '@intentjs/core/config';
+import { QueueOptions } from '@intentjs/core/queue';
 
-export default configNamespace("queue", () => {
+export default configNamespace('queue', () => {
   return {
-    default: "notifications",
+    default: 'notifications',
     connections: {
       notifications: {
         driver: 'redis',
@@ -454,11 +461,12 @@ Intent internally uses the same database connection that is used, so we don't ne
 To use database as a message queue, you can simply do
 
 ```ts
-import { QueueOptions, RedisDriver, configNamespace } from "@intentjs/core";
+import { configNamespace } from '@intentjs/core/config';
+import { RedisDriver, QueueOptions } from '@intentjs/core/queue';
 
-export default configNamespace("queue", () => {
+export default configNamespace('queue', () => {
   return {
-    default: "notifications",
+    default: 'notifications',
     connections: {
       db: {
         driver: 'db',
@@ -486,9 +494,9 @@ You can easily do so using the command below:
 Now, you need to create two classes `MyCustomQueueDriver` and `MyCustomQueueJob`. Here for understanding purpose we will use AWS AQS in our `MyCustom` driver.
 
 ```typescript
-import { PollQueueDriver, InternalMessage } from "@intentjs/core";
-import AWS = require("aws-sdk");
-import { SqsJob } from "./job";
+import { PollQueueDriver, InternalMessage } from '@intentjs/core/queue';
+import AWS = require('aws-sdk');
+import { SqsJob } from './job';
 
 export class MyCustomQueueDriver implements PollQueueDriver {
   private client: AWS.SQS;
@@ -501,14 +509,14 @@ export class MyCustomQueueDriver implements PollQueueDriver {
     });
     AWS.config.credentials = credential;
     this.client = new AWS.SQS({ apiVersion: options.apiVersion });
-    this.queueUrl = options.prefix + "/" + options.queue;
+    this.queueUrl = options.prefix + '/' + options.queue;
   }
 
   async push(message: string, rawPayload: InternalMessage): Promise<void> {
     const params = {
       DelaySeconds: rawPayload.delay,
       MessageBody: message,
-      QueueUrl: this.options.prefix + "/" + rawPayload.queue,
+      QueueUrl: this.options.prefix + '/' + rawPayload.queue,
     };
 
     await this.client.sendMessage(params).promise().then();
@@ -518,8 +526,8 @@ export class MyCustomQueueDriver implements PollQueueDriver {
   async pull(options: Record<string, any>): Promise<SqsJob | null> {
     const params = {
       MaxNumberOfMessages: 1,
-      MessageAttributeNames: ["All"],
-      QueueUrl: this.options.prefix + "/" + options.queue,
+      MessageAttributeNames: ['All'],
+      QueueUrl: this.options.prefix + '/' + options.queue,
       VisibilityTimeout: 30,
       WaitTimeSeconds: 0,
     };
@@ -530,7 +538,7 @@ export class MyCustomQueueDriver implements PollQueueDriver {
 
   async remove(job: SqsJob, options: Record<string, any>): Promise<void> {
     const params = {
-      QueueUrl: this.options.prefix + "/" + options.queue,
+      QueueUrl: this.options.prefix + '/' + options.queue,
       ReceiptHandle: job.data.ReceiptHandle,
     };
     await this.client.deleteMessage(params).promise();
@@ -539,7 +547,7 @@ export class MyCustomQueueDriver implements PollQueueDriver {
 
   async purge(options: Record<string, any>): Promise<void> {
     const params = {
-      QueueUrl: this.options.prefix + "/" + options.queue,
+      QueueUrl: this.options.prefix + '/' + options.queue,
     };
     await this.client.purgeQueue(params).promise();
     return;
@@ -547,8 +555,8 @@ export class MyCustomQueueDriver implements PollQueueDriver {
 
   async count(options: Record<string, any>): Promise<number> {
     const params = {
-      QueueUrl: this.options.prefix + "/" + options.queue,
-      AttributeNames: ["ApproximateNumberOfMessages"],
+      QueueUrl: this.options.prefix + '/' + options.queue,
+      AttributeNames: ['ApproximateNumberOfMessages'],
     };
     const response: Record<string, any> = await this.client
       .getQueueAttributes(params)

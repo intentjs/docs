@@ -18,7 +18,7 @@ Lets create a `BookTransformer` for a model, say `Book`.
 ```ts
 // src/transformers/book.ts
 import { Transformer } from "@intentjs/core";
-import { BookModel } from "app/models";
+import { BookModel } from "#models/book";
 
 export class BookTransformer extends Transformer {
   async transform(book: BookModel): Promise<Record<string, any>> {
@@ -36,8 +36,8 @@ Now to use the transformer, follow the steps below:
 
 ```ts
 //BookController.ts
-import { Controller, Get } from '@intentjs/core';
-import { BookTransformer } from 'app/transformers/book';
+import { Controller, Get } from '@intentjs/core/http';
+import { BookTransformer } from '#transformers/book';
 
 @Controller('books')
 export class BookController {
@@ -66,7 +66,7 @@ export class BookController {
  */
 ```
 
-:::info
+:::warning NOTE
   Supports only JSON response for now
 :::
 
@@ -120,8 +120,8 @@ Now to request dynamic includes, simply do the following.
 
 ```javascript
 //BookController.ts
-import { Controller, Get } from '@intentjs/core';
-import { BookTransformer } from 'app/transformers/book';
+import { Controller, Get } from '@intentjs/core/http';
+import { BookTransformer } from '#transformers/book';
 
 @Controller('books')
 export class BookController {
@@ -159,11 +159,18 @@ You now know how to include data in your response on-demand, we understand there
 You can do it by `?include=author[ratings]`, now make the following changes in `BookTransformer`
 
 ```typescript
-import { Transformer, Transformer$IncludeMethodOptions } from "app/core";
+import { Transformer, Transformer$IncludeMethodOptions } from "@intentjs/core";
 
 export class BookTransformer extends Transformer {
-  availableIncludes = ["author"]; // will be included on request
-  defaultIncludes = []; // included by default
+  /**
+   * will be included on-demand.
+   */
+  availableIncludes = ["author"];
+
+  /**
+   * included by default.
+   */
+  defaultIncludes = [];
 
   async includeAuthor(
     book: Book$Model,
@@ -187,8 +194,9 @@ Here's how you can do it
 
 ```typescript
 //BookController.ts
-import { Controller, Get, Transformable } from '@intentjs/core';
-import { BookTransformer } from 'app/transformers/book';
+import { Transformable } from '@intentjs/core';
+import { Controller, Get, Req, Request } from '@intentjs/core/http';
+import { BookTransformer } from '#transformers/book';
 
 @Controller('books')
 export class BookController extends Transformable {
