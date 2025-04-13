@@ -122,14 +122,14 @@ If you would like to access a store other than the `default` store, you can pass
 ```ts
 import { CacheStore } from '@intentjs/core/cache';
 
-const store = CacheStore("redis");
-// returns the "redis" store
+const store = CacheStore('redis');
+// returns the 'redis' store
 
 // class
-import { Cache } from "@intentjs/core/cache";
+import { Cache } from '@intentjs/core/cache';
 
-const store = Cache.store("local");
-// returns the "local" store
+const store = Cache.store('local');
+// returns the 'local' store
 ```
 
 ### Writing to Cache
@@ -137,10 +137,10 @@ const store = Cache.store("local");
 To write data to a cache, you can use the `set` method.
 
 ```ts
-await Cache.store().set("otp", 1234);
+await Cache.store().set('otp', 1234);
 // returns true if successfully written
 
-await Cache.store().set("book_name", "Shoe Dog");
+await Cache.store().set('book_name', 'Shoe Dog');
 // returns true if successfully written
 ```
 
@@ -165,7 +165,7 @@ If you want your cache to only be valid for certain time, you can pass `ttl (tim
 
 ```ts
 // saved for 120 seconds in the store
-await CacheStore().set("books", books, 120);
+await CacheStore().set('books', books, 120);
 ```
 
 ### Reading Cache
@@ -177,7 +177,7 @@ If you pass a class instance to the `get` method, it is converted to Plain Old J
 :::
 
 ```typescript
-await CacheStore().get("book_name");
+await CacheStore().get('book_name');
 // will return 'Shoe Dog'
 
 await Cache.store().get('books');
@@ -208,7 +208,7 @@ const cb = () => {
   ];
 };
 
-await CacheStore().remember("books", cb, 120);
+await CacheStore().remember('books', cb, 120);
 ```
 
 Notice the 2nd arg `cb` callback, and the 3rd arg `ttl` timeout, passed to the `remember` method. The `cb` will be processed and the value returned by the callback will be serialized and saved to the store automatically for `ttl` time.
@@ -225,7 +225,7 @@ const cb = () => {
   return []; // books here.
 };
 
-await CacheStore().rememberForever("books", cb);
+await CacheStore().rememberForever('books', cb);
 ```
 
 The above example saves the data indefinitely in the redis store. The only difference between the `rememberForever` and `remember` method is the expiry time (3rd argument) of the key in the store.
@@ -240,14 +240,14 @@ Let's take a look at those.
 To check if key exists in the store, you can use `.has()` method
 
 ```typescript
-await CacheStore().has("books");
+await CacheStore().has('books');
 // will return `true` if found, else `false`
 ```
 
 To remove a key from the store, use `.forget()` method
 
 ```typescript
-await CacheStore().forget("books");
+await CacheStore().forget('books');
 ```
 
 When it comes to interacting with cache, it can often become cumbersome to maintain a standardisation of how keys are being built and used in an application. We have added a `genKey` method or `CacheKeyGen` helper which you can use to generate keys.

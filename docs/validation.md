@@ -19,7 +19,7 @@ In order to validate your input, you first need to create a schema which we will
 You can create a schema like below
 
 ```typescript
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateBookDto {
   @IsString()
@@ -39,7 +39,7 @@ For available validation decorators, you can refer to the[ \`class-validator\` ]
 Now that you have the schema ready, we will need to validate it. To do so, you can make use of the `Validator` class.
 
 ```typescript
-import { Validator } from "@intentjs/core/validator";
+import { Validator } from '@intentjs/core/validator';
 
 const validator = Validator.compareWith(CreateBookDto);
 ```
@@ -59,8 +59,8 @@ The `validate` method also returns the instance of the schema if the validation 
 
 ```typescript
 const dto = await validator.validate({
-  name: "Get Epic Shit Done",
-  author: "Ankur Warikoo",
+  name: 'Get Epic Shit Done',
+  author: 'Ankur Warikoo',
 });
 
 console.log(dto.name);
@@ -76,7 +76,7 @@ Validator class throws `ValidationFailed` exception if the validation fails. Let
 
 ```typescript
 await validator.validate({
-  name: "Get Epic Shit Done",
+  name: 'Get Epic Shit Done',
 });
 ```
 
@@ -84,7 +84,7 @@ This would throw an exception because it doesn't have the `author` attribute as 
 
 ```typescript
 try {
-  validator.validate({ name: "Get Epic Shit Done" });
+  validator.validate({ name: 'Get Epic Shit Done' });
 } catch (e) {
   if (e instanceof ValidationFailed) {
     console.log(e.getErrors());
@@ -96,7 +96,7 @@ The `getErrors` method returns the error object like below
 
 ```json
 {
-  "author": ["Author should not be empty"]
+  'author': ['Author should not be empty']
 }
 ```
 
@@ -113,10 +113,10 @@ If you want to validate the payload that you are getting inside the request, you
 ```typescript
 @Controller()
 export class BookController {
-  @Post("")
+  @Post(')
   async create(@IRequest() req: IntentRequest) {
     const dto = await req.validate(CreateBookDto);
-    return { msg: "Book Created Successfully!" };
+    return { msg: 'Book Created Successfully!' };
   }
 }
 ```
@@ -133,10 +133,10 @@ import { Validate } from '@intentjs/core/validator';
 
 @Controller()
 export class BookController {
-  @Post("")
+  @Post(')
   @Validate(CreateBookDto)
   async create(@Dto() dto: CreateBookDto) {
-    return { msg: "Book Created Successfully!" };
+    return { msg: 'Book Created Successfully!' };
   }
 }
 ```

@@ -17,8 +17,8 @@ Lets create a `BookTransformer` for a model, say `Book`.
 
 ```ts
 // src/transformers/book.ts
-import { Transformer } from "@intentjs/core";
-import { BookModel } from "#models/book";
+import { Transformer } from '@intentjs/core';
+import { BookModel } from '#models/book';
 
 export class BookTransformer extends Transformer {
   async transform(book: BookModel): Promise<Record<string, any>> {
@@ -47,7 +47,7 @@ export class BookController {
       uuid: '75442486-0878-440c-9db1-a7996c22a39f',
       name: 'IntentJS',
       publisher: 'HanaLabs'
-      publishedAt: "2024-02-01 00:00:00",
+      publishedAt: '2024-02-01 00:00:00',
     }];
 
     const transformer = new BookTransformer();
@@ -85,10 +85,10 @@ Transformer provides two options define your includes.
 Below example gives you a peek on how you can create in include in the transformer.
 
 ```ts
-import { Transformer } from "@intentjs/core";
+import { Transformer } from '@intentjs/core';
 
 export class BookTransformer extends Transformer {
-  availableIncludes = ["author"]; // will be included on request
+  availableIncludes = ['author']; // will be included on request
   defaultIncludes = []; // included by default
 
   async transform(book: Book$Model): Promise<Record<string, any>> {
@@ -96,7 +96,7 @@ export class BookTransformer extends Transformer {
       id: book.uuid,
       name: book.name,
       publisherName: book.publisher,
-      publishedOn: moment(book.publishedAt).format("YYYY-MM-DD"),
+      publishedOn: moment(book.publishedAt).format('YYYY-MM-DD'),
     };
   }
 
@@ -107,7 +107,7 @@ export class BookTransformer extends Transformer {
 }
 ```
 
-Notice the "author" inside the `availableIncludes` and `includeAuthor` method, transformer will prefix `include` to the requested include name. For example, transformer will look for `includeAuthor` method when you request `include=author`
+Notice the 'author' inside the `availableIncludes` and `includeAuthor` method, transformer will prefix `include` to the requested include name. For example, transformer will look for `includeAuthor` method when you request `include=author`
 
 Now to use the include the `author` option, we need to pass the `include` query params in the URL, like: `/books/75442486-0878-440c-9db1-a7006c25a39f?include=author`
 
@@ -131,9 +131,9 @@ export class BookController {
       uuid: '75442486-0878-440c-9db1-a7996c22a39f',
       name: 'IntentJS',
       publisher: 'HanaLabs'
-      publishedAt: "2024-02-01 00:00:00",
+      publishedAt: '2024-02-01 00:00:00',
       author: {
-        name: "vinayak sarawagi"
+        name: 'vinayak sarawagi'
       }
     }];
 
@@ -159,13 +159,13 @@ You now know how to include data in your response on-demand, we understand there
 You can do it by `?include=author[ratings]`, now make the following changes in `BookTransformer`
 
 ```typescript
-import { Transformer, Transformer$IncludeMethodOptions } from "@intentjs/core";
+import { Transformer, Transformer$IncludeMethodOptions } from '@intentjs/core';
 
 export class BookTransformer extends Transformer {
   /**
    * will be included on-demand.
    */
-  availableIncludes = ["author"];
+  availableIncludes = ['author'];
 
   /**
    * included by default.
@@ -206,9 +206,9 @@ export class BookController extends Transformable {
       uuid: '75442486-0878-440c-9db1-a7996c22a39f',
       name: 'IntentJS',
       publisher: 'HanaLabs'
-      publishedAt: "2024-02-01 00:00:00",
+      publishedAt: '2024-02-01 00:00:00',
       author: {
-        name: "vinayak sarawagi"
+        name: 'vinayak sarawagi'
       }
     }];
     return this.item(book, new BookTransformer, req);

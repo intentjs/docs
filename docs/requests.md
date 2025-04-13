@@ -23,7 +23,7 @@ Out of the box Intent supports following `Content-Type`.
 To get the `Request` object, you will need to type-hint the `Request` class from `@intentjs/core`. The incoming request will automatically be injected into the controller's method.
 
 ```ts
-import { Req, Request, Controller } from "@intentjs/core";
+import { Req, Request, Controller } from '@intentjs/core';
 
 @Controller('books')
 export class BookController {
@@ -32,7 +32,7 @@ export class BookController {
   async create(@Req() req: Request) {
     const payload = req.all();
     const name = payload.name
-    return { msg: "Book Created Successfully!" };
+    return { msg: 'Book Created Successfully!' };
   }
 }
 ```
@@ -229,14 +229,14 @@ The `Request` instance comes packed with variety of methods.
 To retrieve input for a particular key from the `Request` instance, you can use `input` method.
 
 ```ts
-const name = req.input("sportsperson");
+const name = req.input('sportsperson');
 // Virat Kohli
 ```
 
 You can also pass the second argument as the default value to the `input` method. If the passed key is not present inside the payload, it will return the default value.
 
 ```ts
-const name = req.input("sportsperson", 'Rohit Sharma');
+const name = req.input('sportsperson', 'Rohit Sharma');
 // Rohit Sharma
 ```
 
@@ -257,19 +257,19 @@ const inputs = req.all();
 If you want to fetch a value as a string, you can use `string` method
 
 ```ts
-const str = req.string("name");
+const str = req.string('name');
 ```
 
 Alternatively, if you want to fetch a value parsed as a number, you can use the `number` method
 
 ```ts
-const num = req.number("amount");
+const num = req.number('amount');
 ```
 
-If you would to fetch a value as a boolean, you can use the `boolean` method, this method returns `true` for all "truthy" values. It would return `true` for 1, "1", true, "true", "yes", "on", for all other values it would return `false`;
+If you would to fetch a value as a boolean, you can use the `boolean` method, this method returns `true` for all 'truthy' values. It would return `true` for `1`, `'1'`, `true`, `'true'`, `'yes'`, `'on'`, for all other values it would return `false`;
 
 ```ts
-const bool = req.boolean("tncAgreed");
+const bool = req.boolean('tncAgreed');
 ```
 
 :::info
@@ -283,7 +283,7 @@ If you want to specifically access query parameters, you can make use of `query`
 To access a query param, you can pass the key to the `query` method like below.
 
 ```typescript
-const query = req.query("page");
+const query = req.query('page');
 ```
 
 If you don't pass any argument to it, it would return all query params.
@@ -295,7 +295,7 @@ There can be situations where you want to just check if a particular key is pres
 Using `has` method, you can check if a particular key is present inside the payload or not.
 
 ```typescript
-if (req.has("email")) {
+if (req.has('email')) {
   // ...
 }
 ```
@@ -303,7 +303,7 @@ if (req.has("email")) {
 Similarly, if you want to check if either of keys are available or not, you can pass multiple keys to the same `has` method. It will return true as soon as any of the passed keys are present inside the payload.
 
 ```typescript
-if (req.has("email", "phone")) {
+if (req.has('email', 'phone')) {
   // ...
 }
 ```
@@ -315,7 +315,7 @@ Headers are important if you are building a REST API as they provide lots of met
 To get a header by it's key, you can use the `header` method
 
 ```typescript
-const authorization = req.header("authorization");
+const authorization = req.header('authorization');
 ```
 
 You can also pass the second argument as the default value to the `header` method. If the passed key is not present inside the payload, it will return the default value.&#x20;
@@ -335,7 +335,7 @@ const token = req.bearerToken();
 To check if a request has a specific header, you can make use of `hasHeader` method.
 
 ```typescript
-if (req.hasHeader("authorization")) {
+if (req.hasHeader('authorization')) {
   // ...
 }
 ```
@@ -343,7 +343,7 @@ if (req.hasHeader("authorization")) {
 If you want to check for multiple headers, you can simply pass the headers to the same `hasHeader` method only. It will return true if any one of the header is present inside the request.
 
 ```typescript
-if (req.hasHeader("authroization", "cookie")) {
+if (req.hasHeader('authroization', 'cookie')) {
   // ...
 }
 ```

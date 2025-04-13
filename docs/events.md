@@ -10,7 +10,7 @@ Intent offers a simple yet useful implementation of the observer pattern, allowi
 
 Events provide a great mechanism to decouple your business logic which do not depend on each other. Let's understand it better with the help of an example: Let's say you are building a book store, when a user orders a book, we want to send them a notification.
 
-1. Send "Order Successful" notification.
+1. Send 'Order Successful' notification.
 2. Send a notification to Seller as well.
 3. Do some 3rd party API calls
 
@@ -29,7 +29,7 @@ node intent make:listener order_placed --event=order_placed
 
 This would generate the following files and classes.
 
-```ts filename="app/events/orderPlacedEvent.ts"
+```ts filename='app/events/orderPlacedEvent.ts'
 import { EmitsEvent, Event } from '@intentjs/core/events';
 
 @Event('order_placed')
@@ -40,7 +40,7 @@ export class OrderPlacedEvent extends EmitsEvent {
 }
 ```
 
-```ts filename="app/events/listeners/orderPlacedListener.ts"
+```ts filename='app/events/listeners/orderPlacedListener.ts'
 import { Injectable } from '@intentjs/core';
 import { ListensTo } from '@intentjs/core/events';
 
@@ -59,7 +59,7 @@ Also, the listener class automatically gets registered inside the `module.ts` fi
 
 To create an event class, you can create a class similar to below inside the `app/events` directory. An event class is a data container which holds the information related to the event
 
-```ts filename="app/events/orderPlacedEvent.ts"
+```ts filename='app/events/orderPlacedEvent.ts'
 import { EmitsEvent, Event } from '@intentjs/core/events';
 
 @Event('order_placed')
@@ -80,7 +80,7 @@ To create a listener for a particular event, we can utilize the `@ListensTo` dec
 All of the listeners only receive the normalised form of the all the data passed to the event.
 :::
 
-```ts filename="app/events/listeners/orderPlacedListener.ts"
+```ts filename='app/events/listeners/orderPlacedListener.ts'
 import { Injectable } from '@intentjs/core';
 import { ListensTo } from '@intentjs/core/events';
 
@@ -104,7 +104,7 @@ To dispatch an event, you can make either use of the `emit()` method on the even
 Let's take a look on how to use the `emit` method.
 
 ```typescript
-const order = { id: 123, product: "A book" };
+const order = { id: 123, product: 'A book' };
 const event = new OrderPlacedEvent(order);
 event.emit();
 ```
@@ -113,7 +113,7 @@ If you would like to conditionally dispatch an event, you can make use of either
 
 As the name suggest, `emitIf` will only emit event if the `condition` evaluates to `true`.
 ```typescript
-const order = { id: 123, product: "A book" };
+const order = { id: 123, product: 'A book' };
 const event = new OrderPlacedEvent(order);
 event.emitIf(condition);
 ```
@@ -121,7 +121,7 @@ event.emitIf(condition);
 Unlike `emitIf`, if you would like to only emit an event if the `condition` evalues to `false`, then you can use `emitUnless` method.
 
 ```typescript
-const order = { id: 123, product: "A book" };
+const order = { id: 123, product: 'A book' };
 const event = new OrderPlacedEvent(order);
 event.emitUnless(condition);
 ```
@@ -164,20 +164,20 @@ Making an events queueable means it will be processed automatically via the conf
 Doing so, you may define `connection`, `queue`, or `delay` properties.
 
 ```typescript
-import { Event, QueueableEvent } from "@intentjs/core/events";
+import { Event, QueueableEvent } from '@intentjs/core/events';
 
 export class OrderPlacedEvent extends Event implements QueueableEvent {
   /**
    * The name of the connection on which the event should be sent to.
    * Leave it blank to use the configured queue for the connection.
    */
-  public connection = "sqs";
+  public connection = 'sqs';
 
   /**
    * The name of the queue on which the event should be sent to.
    * Leave it blank to use the configured queue for the connection.
    */
-  public queue = "order_notifications";
+  public queue = 'order_notifications';
 
   /**
    * The delay(in seconds) before the job should be processed.

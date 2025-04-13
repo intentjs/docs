@@ -46,6 +46,8 @@ IntentJS provides the following helpers
 
 ## Array Helper Methods
 
+All of the array helpers are exported from `import { Arr } from '@intentjs/core/helpers'`
+
 ### collapse {#arr-collapse}
 
 You can use `Arr.collapse` method to collapse a nested array into a single level.
@@ -164,6 +166,8 @@ const obj = Arr.toObj(array, ["book", "author"]);
 ```
 
 ## Object Helper Methods
+
+All of the Object helpers are exported from `import { Obj } from '@intentjs/core/helpers'`
 
 ### dot {#obj-dot}
 
@@ -349,7 +353,7 @@ All of the number helpers are exported from `import { Num } from '@intentjs/core
 The abbreviate method returns the human-readable format of the provided numerical value.
 
 ```typescript
-import { Num } from "@intentjs/core/helpers";
+import { Num } from '@intentjs/core/helpers';
 
 Num.abbreviate(1000);
 // 1K
@@ -473,6 +477,8 @@ Num.percentage(10.123, { precision: 2 });
 ```
 
 ## String Helper Methods
+
+All of the string helpers are exported from `import { Str } from '@intentjs/core/helpers'`
 
 ### after {#str-after}
 
