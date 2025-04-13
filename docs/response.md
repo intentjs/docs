@@ -1,6 +1,7 @@
 ---
 title: Response
-description:
+description: Learn how to handle HTTP responses in IntentJS applications, including JSON responses, text responses, file streaming, status codes, headers, and redirections.
+keywords: HTTP responses, response handling, JSON responses, text responses, file streaming, status codes, response headers, redirections, StreamableFile
 image:
 ---
 # Response
@@ -12,7 +13,7 @@ IntentJS provides a useful `Response` class which you can use to send back respo
 Let's take a look at how you can send back response from your route handlers.
 
 ```ts
-import { Controller, Get, Req, Request } from '@intentjs/core';
+import { Controller, Get, Req, Request } from '@intentjs/core/http';
 
 @Controller('/users')
 export class UserController {
@@ -33,7 +34,7 @@ Similarly you can also send back variety of response to the client. Below mentio
 To send back the JSON response
 
 ```ts
-import { Controller, Get, Req, Request } from '@intentjs/core';
+import { Controller, Get, Req, Request } from '@intentjs/core/http';
 
 @Controller('/users')
 export class UserController {
@@ -49,7 +50,7 @@ export class UserController {
 Now if you would like to make use of the `Response` class, you could do so by injecting the `Response` instance using the `@Res` decorator.
 
 ```ts
-import { Controller, Get, Req, Request } from '@intentjs/core';
+import { Controller, Get, Req, Request } from '@intentjs/core/http';
 
 @Controller('/users')
 export class UserController {
@@ -75,7 +76,7 @@ async get(@Req() req: Request) {
 Now, using the `res.send` method.
 
 ```ts
-import { HttpStatus } from '@intentjs/core';
+import { HttpStatus } from '@intentjs/core/http';
 
 @Get('')
 async get(@Req() req: Request, @Res() res: Response) {
@@ -90,7 +91,7 @@ async get(@Req() req: Request, @Res() res: Response) {
 Intent also supports streaming file, it comes with a `StreamableFile` class which you can use to send back streams as a response.
 
 ```ts
-import { HttpStatus, StreamableFile } from '@intentjs/core';
+import { HttpStatus, StreamableFile } from '@intentjs/core/http';
 
 @Get('')
 async get(@Req() req: Request) {

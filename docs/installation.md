@@ -1,6 +1,7 @@
 ---
 title: Installation
-description:
+description: Learn about IntentJS, a web application framework with elegant syntax and developer experience, and how to install it for your projects.
+keywords: IntentJS, web framework, installation, NodeJS, dependency injection, RDBMS, storage, message queues, mailers, caching, logging, validation
 image:
 ---
 

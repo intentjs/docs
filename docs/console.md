@@ -1,7 +1,8 @@
 ---
 title: Console Commands
-description:
-image:
+description: Create powerful CLI applications with Intent.js console commands. Learn to build interactive command-line tools with argument parsing, styled outputs, and interactive prompts. Perfect for automation and development workflows.
+keywords: Intent.js console commands, CLI applications, command-line tools, argument parsing, interactive prompts, console output, automation tools, development workflows
+image: /images/console-commands.png
 ---
 
 # Console

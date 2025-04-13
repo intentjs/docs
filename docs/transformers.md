@@ -1,6 +1,7 @@
 ---
 title: Transformers
-description: Data Transformers for your IntentJS applications.
+description: Learn how to use Transformers in IntentJS applications to transform and format data before sending it in API responses, including optional includes and nested relationships.
+keywords: transformers, data transformation, API responses, JSON formatting, optional includes, nested relationships, Transformable class, response formatting
 image:
 ---
 # Transformers

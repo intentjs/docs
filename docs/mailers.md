@@ -1,6 +1,7 @@
 ---
 title: Mailers
-description:
+description: Learn how to implement email functionality in your IntentJS application using the built-in mailer system, including SMTP, Mailgun, and Resend providers, and how to create beautiful email templates.
+keywords: mailers, email, SMTP, Mailgun, Resend, email templates, MailMessage, attachments, custom templates, react.email, email configuration
 image:
 ---
 

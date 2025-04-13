@@ -1,6 +1,7 @@
 ---
 title: Providers
-description:
+description: Learn about providers in IntentJS, including standard providers, dependency injection, custom providers, and how to register and use them in your application.
+keywords: providers, dependency injection, service providers, injectable classes, constructor injection, property injection, custom providers, value providers, factory providers
 image:
 ---
 # Providers
