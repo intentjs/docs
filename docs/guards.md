@@ -22,10 +22,11 @@ Since Guards can only be used during an HTTP request lifecycle, they are stored 
 Let's create our first guard, `role-guard.ts`.
 
 ```ts
-import { Injectable, IntentGuard, ExecutionContext } from '@intentjs/core';
+import { Injectable } from '@intentjs/core';
+import { ExecutionContext, HttpGuard } from '@intentjs/core/http';
 
 @Injectable()
-export class RoleGuard extends IntentGuard {
+export class RoleGuard extends HttpGuard {
   async guard(ctx: ExecutionContext): Promise<boolean> {
     const userHasNecessaryRoles = true; // change this to your own custom logic.
 
@@ -38,7 +39,7 @@ export class RoleGuard extends IntentGuard {
 }
 ```
 
-When you crearte a new guard, you extend the `IntentGuard` class and implement the method `guard`. Whenever a new request comes in, the `guard` method runs
+When you crearte a new guard, you extend the `HttpGuard` class and implement the method `guard`. Whenever a new request comes in, the `guard` method runs
 and depending on it's return value (`true` or `false`), it passes or fails the guard respectively.
 
 Inside the `guard` method, you get access to only 1 arguments, ie `ExecutionContext`, you can read more about it [here](./execution-context.md).
@@ -48,10 +49,11 @@ The `guard` method needs to return `true` or `false` as return values, where `tr
 You can also throw errors directly from your guard. All of the exceptions thrown from the guards are captured inside the [Exception Filters](./error-handling.md).
 
 ```ts
-import { Injectable, IntentGuard, ExecutionContext } from '@intentjs/core';
+import { Injectable } from '@intentjs/core';
+import { ExecutionContext, HttpGuard } from '@intentjs/core/http';
 
 @Injectable()
-export class RoleGuard extends IntentGuard {
+export class RoleGuard extends HttpGuard {
   async guard(ctx: ExecutionContext): Promise<boolean> {
     const userHasNecessaryRoles = true; // change this to your own custom logic.
 
@@ -69,8 +71,8 @@ export class RoleGuard extends IntentGuard {
 After creating guard, we now need to start using it. To do so, we will make use of `UseGuards` decorator.
 
 ```ts
-import { Controller, Get, UseGuards } from '@intentjs/core';
-import { RoleGuard } from '../guards/role-guard'
+import { Controller, Get, UseGuards } from '@intentjs/core/http';
+import { RoleGuard } from '#http/guards/role-guard'
 
 @Controller('/users/')
 @UseGuards(RoleGuard)
@@ -94,7 +96,7 @@ Let's say you want to make a route accessible to users with `admin` role only, a
 2. Set the decorator on our controller.
 2. Read the metadata from the `HasRoles` decorator inside the guard.
 
-Now, let's create our `HasRoles` decorator inside the `http/decorators.ts`
+Now, let's create our `HasRoles` decorator inside the `#http/decorators.ts`
 ```ts
 import { Reflector } from '@intentjs/core';
 
@@ -104,9 +106,9 @@ export const HasRoles = Reflector.createDecorator<string[]>();
 After creating the `HasRoles` decorator, we can now use it to set the metadata on our controller.
 
 ```ts
-import { Controller, Get, UseGuards } from '@intentjs/core';
-import { RoleGuard } from '../guards/role-guard'
-import { HasRoles } from '../decorators'
+import { Controller, Get, UseGuards } from '@intentjs/core/http';
+import { RoleGuard } from '#http/guards/role-guard'
+import { HasRoles } from '#http/decorators'
 
 @Controller('/users/')
 @UseGuards(RoleGuard)
@@ -134,11 +136,12 @@ async create() {
 Now after setting the metadata, we will now need to read the value from `HasRoles` decorator inside our `RoleGuard`.
 
 ```ts
-import { Injectable, IntentGuard, ExecutionContext } from '@intentjs/core';
-import { HasRoles } from '../decorators';
+import { Injectable } from '@intentjs/core';
+import { ExecutionContext, HttpGuard } from '@intentjs/core/http';
+import { HasRoles } from '#http/decorators';
 
 @Injectable()
-export class RoleGuard extends IntentGuard {
+export class RoleGuard extends HttpGuard {
   async guard(ctx: ExecutionContext): Promise<boolean> {
     const reflector = ctx.getReflector(); // returns an instance of the Reflector class.
     const req = ctx.switchToHttp().getRequest();
@@ -163,8 +166,9 @@ You can also create Global Guards, which automatically gets applied on every req
 it inside the `http/kernel.ts`.
 
 ```ts
-import { IntentGuard, Kernel, Type, } from '@intentjs/core';
-import { RateLimiter } from './guards/rate-limiter';
+import { Type } from '@intentjs/core';
+import { HttpGuard, Kernel } from '@intentjs/core/http';
+import { RateLimiter } from '#http/guards/rate-limiter';
 
 export class HttpKernel extends Kernel {
   /**
@@ -174,7 +178,7 @@ export class HttpKernel extends Kernel {
    *
    * Read more - https://tryintent.com/docs/guards
    */
-  public guards(): Type<IntentGuard>[] {
+  public guards(): Type<HttpGuard>[] {
     return [RateLimiter];
   }
 }
