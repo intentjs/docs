@@ -1,6 +1,7 @@
 ---
 title: Reflectors
-description: Using Reflections in IntentJS.
+description: Learn how to use Reflectors in IntentJS to set and retrieve custom metadata on controllers and methods, enabling powerful decorator-based functionality.
+keywords: reflectors, metadata, decorators, custom decorators, class metadata, method metadata, guards, reflection, SetMetadata, createDecorator
 image:
 ---
 
