@@ -1,6 +1,7 @@
 ---
 title: Queues
-description: Intent provides powerful and consistent set of APIs for interacting with frequently used message queues like `AWS SQS`, `Redis`.
+description: Learn how to implement message queues in IntentJS applications using various drivers like AWS SQS, Redis, and database, for handling asynchronous tasks and improving application scalability.
+keywords: message queues, AWS SQS, Redis, database queues, job dispatching, queue workers, queue configuration, asynchronous processing, job retries, delayed jobs
 image:
 ---
 
