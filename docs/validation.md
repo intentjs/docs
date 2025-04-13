@@ -1,6 +1,7 @@
 ---
 title: Validation
-description:
+description: Learn how to implement robust data validation in IntentJS applications using class-validator, custom decorators, and validation schemas for ensuring data integrity in your REST APIs.
+keywords: validation, data validation, class-validator, validation schemas, decorators, request validation, database validation, custom validators, validation rules, input validation
 image:
 ---
 
