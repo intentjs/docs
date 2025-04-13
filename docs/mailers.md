@@ -17,7 +17,8 @@ It comes with a pre-built email template which you can use to make your template
 The configuration for mailer is available at `config/mailer.ts`. Before using it, you will need to configure it. Below example shows how to configure a `smtp` provider for sending out email.
 
 ```ts copy
-import { MailerOptions, IntentMail, configNamespace } from '@intentjs/core';
+import { configNamespace } from "@intentjs/core/config";
+import { MailerOptions } from "@intentjs/core/mail";
 
 export default configNamespace(
   'mailers',
@@ -37,11 +38,10 @@ export default configNamespace(
         },
       },
       template: {
-        appName: 'Intent',
+        appName: process.env.APP_NAME,
         footer: {
-          title: 'Contact: hi@tryintent.com',
+          title: process.env.APP_NAME,
         },
-        baseComponent: BaseMail,
       },
     }) as MailerOptions,
 );
@@ -117,7 +117,7 @@ For example, let's take a look at the quick mail generated using Intent.
 Now, let's take a look at the code written to get this output.
 
 ```ts copy
-import { MailMessage } from '@intentjs/core';
+import { MailMessage } from '@intentjs/core/mail';
 
 MailMessage.init()
   .greeting('Hey there')
@@ -392,7 +392,8 @@ To do this, you can create a custom class extending `MailMessage` and define a `
 Let's take a quick look at how you can create custom `MailMessage` class.
 
 ```typescript copy
-import { MailMessage, Num } from '@intentjs/core';
+import { Num } from '@intentjs/core/helpers';
+import { MailMessage } from '@intentjs/core/mail';
 
 export class InvoicePaidMail extends MailMessage {
   constructor(private order: Record<string, any>) {
@@ -421,7 +422,7 @@ export class InvoicePaidMail extends MailMessage {
 Now to use this class, you can just initialise it like a simple class.
 
 ```ts copy
-import { InvoicePaidMail } from 'app/mails';
+import { InvoicePaidMail } from '#mails/invoice-paid';
 
 const mail5 = new InvoicePaidMail({
   id: 'order_1234',
@@ -446,7 +447,7 @@ Now that we have built the mail, we will now take a look at how can we send emai
 To send a mail, we will use the `Mail` class. You will first need to initialize the class using the `init` method.
 
 ```ts
-import { Mail, MailMessage } from "@intentjs/core";
+import { Mail, MailMessage } from "@intentjs/core/mail";
 
 const mail = MailMessage.init()
   .greeting("Hello admin")
