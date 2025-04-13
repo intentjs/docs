@@ -24,7 +24,7 @@ npm i -g @intentjs/cli
 intent new my-project
 ```
 
-Once this command has ran, move to the directory `new-sample-app` and open it inside your fav code editor.
+Once this command has ran, move to the directory `my-project` and open it inside your fav code editor.
 
 You can read more about the directory structure [here](https://tryintent.com/docs/directory-structure).
 
