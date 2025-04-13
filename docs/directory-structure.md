@@ -1,6 +1,7 @@
 ---
 title: Directory Structure
-description:
+description: Explore the recommended directory structure of IntentJS applications, including the purpose and organization of each directory for building scalable applications.
+keywords: directory structure, app directory, config directory, models, controllers, services, events, jobs, mails, console commands, file organization
 image:
 ---
 
