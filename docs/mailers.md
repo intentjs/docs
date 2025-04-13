@@ -17,8 +17,8 @@ It comes with a pre-built email template which you can use to make your template
 The configuration for mailer is available at `config/mailer.ts`. Before using it, you will need to configure it. Below example shows how to configure a `smtp` provider for sending out email.
 
 ```ts copy
-import { configNamespace } from "@intentjs/core/config";
-import { MailerOptions } from "@intentjs/core/mail";
+import { configNamespace } from '@intentjs/core/config';
+import { MailerOptions } from '@intentjs/core/mail';
 
 export default configNamespace(
   'mailers',
@@ -211,7 +211,7 @@ We have added the support for JSX elements, ie React Components (built on top of
 
 You can use any `react.email` based component in Intent. Let's take a quick look at custom component.
 
-```ts filename="resources/mail/resetPassword.tsx" copy
+```ts filename='resources/mail/resetPassword.tsx' copy
 import {
   Body,
   Button,
@@ -256,7 +256,7 @@ export const ResetPasswordEmail = ({
             <Text style={text}>
               To keep your account secure, please don&apos;t forward this email
               to anyone. See our Help Center for{' '}
-              <Link style={anchor} href="https://dropbox.com">
+              <Link style={anchor} href='https://dropbox.com'>
                 more security tips.
               </Link>
             </Text>
@@ -279,7 +279,7 @@ const container = {
 const text = {
   fontSize: '16px',
   fontFamily:
-    "'Open Sans', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
+    ''Open Sans', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif',
   fontWeight: '300',
   color: '#404040',
   lineHeight: '26px',
@@ -289,7 +289,7 @@ const button = {
   backgroundColor: '#007ee6',
   borderRadius: '4px',
   color: '#fff',
-  fontFamily: "'Open Sans', 'Helvetica Neue', Arial",
+  fontFamily: ''Open Sans', 'Helvetica Neue', Arial',
   fontSize: '15px',
   textDecoration: 'none',
   textAlign: 'center' as const,
@@ -338,7 +338,7 @@ MailMessage.init()
 To set the subject for the mail, you can call the `subject` method on mailMessage.
 
 ```typescript
-mail.subject("Invoice #12345 has been paid. Yay!");
+mail.subject('Invoice #12345 has been paid. Yay!');
 ```
 
 ### Attachments
@@ -353,8 +353,8 @@ To attach file(s) with your email, you can make use of `attach()` method.
 Let's say you have the file hosted somewhere, you can do it like
 
 ```typescript
-mail.attach("invoice.pdf", {
-  url: "https://link.com/invoice.pdf",
+mail.attach('invoice.pdf', {
+  url: 'https://link.com/invoice.pdf',
 });
 ```
 
@@ -378,7 +378,7 @@ Sometimes, you may want to see the final template that will be built out of the 
 You can do so by calling the `toHtml` method, which returns the complete HTML string that will be sent in the mail.
 
 ```typescript {7}
-const mail = MailMessage.init().greeting("Hello there");
+const mail = MailMessage.init().greeting('Hello there');
 
 console.log(mail.toHtml()); 
 // prints the html of the mail
@@ -447,17 +447,17 @@ Now that we have built the mail, we will now take a look at how can we send emai
 To send a mail, we will use the `Mail` class. You will first need to initialize the class using the `init` method.
 
 ```ts
-import { Mail, MailMessage } from "@intentjs/core/mail";
+import { Mail, MailMessage } from '@intentjs/core/mail';
 
 const mail = MailMessage.init()
-  .greeting("Hello admin")
-  .line("One of your invoices #12345 has been paid!")
-  .action("Check invoice", "https://tryintent.com")
-  .line("Please let us know if you are facing any issue!")
-  .subject("INVOICE PAID: #12345");
+  .greeting('Hello admin')
+  .line('One of your invoices #12345 has been paid!')
+  .action('Check invoice', 'https://tryintent.com')
+  .line('Please let us know if you are facing any issue!')
+  .subject('INVOICE PAID: #12345');
 
 Mail.init()
-  .to("vinayak@tryintent.com") // OR .to(['id1@email.com', 'id2@email.com'])
+  .to('vinayak@tryintent.com') // OR .to(['id1@email.com', 'id2@email.com'])
   .send(mail);
 ```
 
@@ -476,7 +476,7 @@ If you want to change the sender other than the one defined in `config/mailer.ts
 
 ```typescript
 Mail.init()
-  .from("no-reply@tryintent.com")
+  .from('no-reply@tryintent.com')
   .send(mail);
 ```
 
@@ -486,8 +486,8 @@ To add cc or bcc to your mail, you can make use of the `cc()` and `bcc()` method
 
 ```typescript
 Mail.init()
-  .to("vinayak@tryintent.com") // OR .to(['id1@email.com', 'id2@email.com'])
-  .cc("cc@email.com") // string or string[]
-  .bcc("bcc@email.com") // string or string[]
+  .to('vinayak@tryintent.com') // OR .to(['id1@email.com', 'id2@email.com'])
+  .cc('cc@email.com') // string or string[]
+  .bcc('bcc@email.com') // string or string[]
   .send(mail);
 ```
