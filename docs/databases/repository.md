@@ -21,8 +21,8 @@ Let's say you want to get count of all successful orders for all users list with
 ```typescript
 // without repository pattern
 const users = await UserModel.query().select(
-  "users.*",
-  User.relatedQuery("orders").count().as("ordersCount")
+  'users.*',
+  User.relatedQuery('orders').count().as('ordersCount')
 );
 
 // with repository pattern
@@ -34,7 +34,7 @@ If you notice, you can clearly see the abstraction happening under the hood. Whi
 In IntentJS application, creating your own repository is pretty straight forward. You can create your own repo like below
 
 ```typescript
-import { Injectable } from "@intentjs/core";
+import { Injectable } from '@intentjs/core';
 import { DatabaseRepository} from '@intentjs/core/db';
 import { UserModel } from '#models/user';
 @Injectable()
@@ -48,7 +48,7 @@ After you create your repository, now we you need to register this repo as a pro
 
 ```typescript
 @Module({
-  providers: [{ provide: "USER_REPO", useClass: UserRepository }, UserService],
+  providers: [{ provide: 'USER_REPO', useClass: UserRepository }, UserService],
 })
 export class UserModule {}
 ```
@@ -58,7 +58,7 @@ After registering the repo inside the provider, you can now inject it inside you
 ```typescript
 @Injectable()
 export class UserService {
-  constructor(@Inject("USER_REPO") private userRepo: UserRepository) {}
+  constructor(@Inject('USER_REPO') private userRepo: UserRepository) {}
 }
 ```
 
@@ -72,7 +72,7 @@ If you want to only search for one user with some where condition.
 
 ```typescript
 const users = await this.users.firstWhere(
-  { contactNumber: "XXXXXXXXXX" },
+  { contactNumber: 'XXXXXXXXXX' },
   false
 );
 ```
@@ -80,14 +80,14 @@ const users = await this.users.firstWhere(
 If you want to search for all users with matching where conditions.
 
 ```typescript
-const users = await this.users.getWhere({ contactNumber: "XXXXXXXXXX" }, false);
+const users = await this.users.getWhere({ contactNumber: 'XXXXXXXXXX' }, false);
 ```
 
 You can also use repo to create or update entries.
 
 ```typescript
-const user = await this.users.create({ firstName: "Tony", lastName: "Stark" });
-await this.users.update(user, { firstName: "New Name" });
+const user = await this.users.create({ firstName: 'Tony', lastName: 'Stark' });
+await this.users.update(user, { firstName: 'New Name' });
 ```
 
 ## Repository Query Methods
@@ -119,7 +119,7 @@ Get the first model with the matching criterias. If not found, it will throw an 
  * Returns User if found, else throws ModelNotFoundException
  */
 const users = await this.users.firstWhere(
-  { contactNumber: "XXXXXXXXXX" },
+  { contactNumber: 'XXXXXXXXXX' },
   true
 );
 
@@ -127,7 +127,7 @@ const users = await this.users.firstWhere(
  * Returns User if found, else throws ModelNotFoundException
  */
 const users = await this.users.firstWhere(
-  { contactNumber: "XXXXXXXXXX" },
+  { contactNumber: 'XXXXXXXXXX' },
   false
 );
 ```
@@ -147,12 +147,12 @@ Get all models with the matching criterias. If not found, it will throw an `Mode
 /**
  * Returns User if found, else throws ModelNotFoundException
  */
-const users = await this.users.getWhere({ contactNumber: "XXXXXXXXXX" }, true);
+const users = await this.users.getWhere({ contactNumber: 'XXXXXXXXXX' }, true);
 
 /**
  * Returns User if found, else throws ModelNotFoundException
  */
-const users = await this.users.getWhere({ contactNumber: "XXXXXXXXXX" }, false);
+const users = await this.users.getWhere({ contactNumber: 'XXXXXXXXXX' }, false);
 ```
 
 ### `create()`
@@ -169,7 +169,7 @@ Create the model in DB and return it's model equivalent instance.
 /**
  * Create a new model with given inputs
  */
-const user = await this.users.create({ firstName: "Tony", lastName: "Stark" });
+const user = await this.users.create({ firstName: 'Tony', lastName: 'Stark' });
 ```
 
 ### `createOrUpdate()`
@@ -188,8 +188,8 @@ Update or create a model with given condition and values.
  * Update or Create model with given condition and values
  */
 const user = await this.users.createOrUpdate(
-  { contactNumber: "XXXXXXXXXX" },
-  { firstName: "Tony", lastName: "Stark" }
+  { contactNumber: 'XXXXXXXXXX' },
+  { firstName: 'Tony', lastName: 'Stark' }
 );
 ```
 
@@ -211,8 +211,8 @@ First or Create model with given condition and values
  * Update or Create model with given condition and values
  */
 const user = await this.users.firstOrNew(
-  { contactNumber: "XXXXXXXXXX" },
-  { firstName: "Tony", lastName: "Stark" }
+  { contactNumber: 'XXXXXXXXXX' },
+  { firstName: 'Tony', lastName: 'Stark' }
 );
 ```
 
@@ -230,8 +230,8 @@ Update the given model with values.
 |  values   |     Y     | Columns to update in the model |   --    |
 
 ```ts
-const users = await this.users.firstWhere({ contactNumber: "XXXXXXXXXX" });
-await this.users.update(user, { firstName: "New Name" });
+const users = await this.users.firstWhere({ contactNumber: 'XXXXXXXXXX' });
+await this.users.update(user, { firstName: 'New Name' });
 ```
 
 New first name of the user will be, 'New Name'.
@@ -249,12 +249,12 @@ Update all models where criterias are matched.
 
 ```typescript
 await this.users.update(
-  { contactNumber: "XXXXXXXXXX" },
-  { firstName: "New Name" }
+  { contactNumber: 'XXXXXXXXXX' },
+  { firstName: 'New Name' }
 );
 ```
 
-The records where contactNumber is "XXXXXXXXXX" will have the updated firstName of "New Name".
+The records where contactNumber is 'XXXXXXXXXX' will have the updated firstName of 'New Name'.
 
 ### `exists()`
 
@@ -270,7 +270,7 @@ Check if model exists where criterias are matched.
 /**
  * Returns true or false
  */
-const users = await this.users.exists({ contactNumber: "XXXXXXXXXX" });
+const users = await this.users.exists({ contactNumber: 'XXXXXXXXXX' });
 ```
 
 ### `count()`
@@ -287,7 +287,7 @@ Get count of models matching the criterias
 /**
  * Returns the count of models found
  */
-const users = await this.users.count({ contactNumber: "XXXXXXXXXX" });
+const users = await this.users.count({ contactNumber: 'XXXXXXXXXX' });
 ```
 
 ### `refresh()`
@@ -304,8 +304,8 @@ Refresh the given model.
 /**
  * Return the new latest model from db
  */
-let user = await this.users.firstWhere({ contactNumber: "XXXXXXXXXX" });
-await this.users.update(user, { firstName: "New Name" });
+let user = await this.users.firstWhere({ contactNumber: 'XXXXXXXXXX' });
+await this.users.update(user, { firstName: 'New Name' });
 user = await this.users.refresh(user);
 ```
 
@@ -323,7 +323,7 @@ Delete the given model.
 /**
  * Return the new latest model from db
  */
-const user = await this.users.firstWhere({ contactNumber: "XXXXXXXXXX" });
+const user = await this.users.firstWhere({ contactNumber: 'XXXXXXXXXX' });
 await this.users.delete(user);
 ```
 
@@ -335,13 +335,13 @@ Update all models where criterias are matched.
 
 **Parameters:**
 
-<table><thead><tr><th width="181" align="center">Parameter</th><th align="center">Required?</th><th align="center">Description</th><th align="center">Default</th></tr></thead><tbody><tr><td align="center">where</td><td align="center">Y</td><td align="center">where conditions</td><td align="center">--</td></tr></tbody></table>
+<table><thead><tr><th width='181' align='center'>Parameter</th><th align='center'>Required?</th><th align='center'>Description</th><th align='center'>Default</th></tr></thead><tbody><tr><td align='center'>where</td><td align='center'>Y</td><td align='center'>where conditions</td><td align='center'>--</td></tr></tbody></table>
 
 ```typescript
-await this.users.deleteWhere({ contactNumber: "XXXXXXXXXX" });
+await this.users.deleteWhere({ contactNumber: 'XXXXXXXXXX' });
 ```
 
-The records where contactNumber is "XXXXXXXXXX" will be deleted.
+The records where contactNumber is 'XXXXXXXXXX' will be deleted.
 
 ### `attach()`
 
@@ -356,7 +356,7 @@ Attach relation's ids to a model via `relation`.
 |  payload  |     Y     | Payload to be attached |   --    |
 
 ```typescript
-await this.roles.attach(role, "permissions", 1);
+await this.roles.attach(role, 'permissions', 1);
 ```
 
 `Role` model will now have `Permission` model with id 1 in its relation.
@@ -376,7 +376,7 @@ Works like `attcach` only, but trashes the old pre-established relations and cre
 |  payload  |     Y     | Payload to be attached |   --    |
 
 ```typescript
-await this.roles.sync(role, "permissions", 1);
+await this.roles.sync(role, 'permissions', 1);
 ```
 
 `Role` model will now have only `Permission` model with id 1 in its relation.
@@ -441,5 +441,5 @@ To change, you can change the connection of your repository using `bindCon` meth
 
 ```typescript
 const repo = new UserRepository();
-const records = await repo.bindCon("postgres-read").all();
+const records = await repo.bindCon('postgres-read').all();
 ```
