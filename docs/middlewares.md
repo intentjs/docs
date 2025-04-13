@@ -1,6 +1,7 @@
 ---
 title: Middlewares
-description:
+description: Learn how to create and implement middlewares in IntentJS applications to handle request processing, validation, and modify the request-response lifecycle.
+keywords: middlewares, request handling, response handling, global middlewares, route middlewares, middleware configuration, HTTP middleware, API key middleware
 image:
 ---
 # Middlewares
