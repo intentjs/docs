@@ -1,6 +1,7 @@
 ---
 title: Execution Context
-description: Using Execution Context
+description: Learn how to use Execution Context in IntentJS to access request, response, controller, and reflector objects in a standardized way across different application protocols.
+keywords: execution context, HTTP context, request handling, response handling, controller methods, reflector, guards, route param decorators
 image:
 ---
 # Execution Context
