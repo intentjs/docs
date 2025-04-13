@@ -1,6 +1,7 @@
 ---
 title: Guards
-description: Using Guards in IntentJS.
+description: Learn how to implement and use guards in IntentJS to protect routes, implement role-based access control, and handle request authorization.
+keywords: guards, route protection, authorization, role-based access, HTTP guards, reflectors, metadata, global guards, decorators
 image:
 ---
 # Guards
