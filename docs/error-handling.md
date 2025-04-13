@@ -1,6 +1,7 @@
 ---
 title: Error Handling
-description:
+description: Learn how to handle and manage errors in IntentJS applications, including custom exception handling, Sentry integration, and validation error serialization.
+keywords: error handling, exception handler, HTTP exceptions, validation errors, Sentry integration, debug mode, error reporting, exception filter
 image:
 ---
 # Error Handling
