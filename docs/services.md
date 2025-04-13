@@ -1,6 +1,7 @@
 ---
-title: Providers
-description:
+title: Services
+description: Learn how to create and use services in IntentJS applications, including dependency injection, service registration, and integrating services with controllers.
+keywords: services, dependency injection, injectable classes, service registration, service providers, controller integration, NestJS providers
 image:
 ---
 # Services
