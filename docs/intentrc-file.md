@@ -1,6 +1,7 @@
 ---
 title: IntentRC File
-description:
+description: Learn how to configure your IntentJS application using the intentrc.ts file, including server boot settings, debug mode, meta files, and type checking options.
+keywords: intentrc.ts, runtime configuration, server boot file, debug mode, meta files, type checking, development settings, watch mode
 image:
 ---
 
