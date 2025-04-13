@@ -29,7 +29,7 @@ Let's say you want to create a namespaced config with `settings` name, you can d
 This is how your config will look
 
 ```ts [config/settings.ts]
-import { configNamespace } from '@intentjs/core';
+import { configNamespace } from '@intentjs/core/config';
 
 export default configNamespace('settings', () => ({
   yourCustomConfigSetting: true
@@ -53,7 +53,7 @@ export default [
 If you want to refer the configuration inside your application, you can make use `IntentConfig` class.
 
 ```typescript
-import { ConfigService } from '@intentjs/core';
+import { ConfigService } from '@intentjs/core/config';
 
 export class AppService {
   constructor(private config: ConfigService) {}
