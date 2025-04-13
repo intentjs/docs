@@ -1,6 +1,7 @@
 ---
 title: Configuration
-description:
+description: Learn how to manage and customize your IntentJS application configurations, including environment variables, custom configs, and best practices for configuration management.
+keywords: configuration, environment variables, dotenv, custom config, config namespace, IntentConfig, ConfigService, reserved namespaces, best practices
 image:
 ---
 
@@ -50,7 +51,7 @@ export default [
 
 ## Accessing the configuration values
 
-If you want to refer the configuration inside your application, you can make use `IntentConfig` class.
+If you want to refer the configuration inside your application, you can make use `ConfigService` class.
 
 ```typescript
 import { ConfigService } from '@intentjs/core/config';
@@ -64,12 +65,6 @@ export class AppService {
   }
 }
 ```
-
-:::info
-  `IntentConfig` is optimised for performance as it automatically caches your
-  config the first time you request any config by it's key. We recommend using
-  `IntentConfig`.
-:::
 
 ## Reserved Namespaces
 
@@ -87,7 +82,7 @@ Following namespaces are reserved for IntentJS.
 | `cache` | [`config/cache.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/cache.ts) |
 | `filesystem` | [`config/filesystem.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/filesystem.ts) |
 | `http` | [`config/http.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/http.ts) |
-| `localization` | [`config/localization.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/localization.ts) |
+| `localization` | [`config/locale.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/locale.ts) |
 | `logger` | [`config/logger.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/logger.ts)|
 | `mailer` | [`config/mailer.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/mailer.ts) |
 | `queue` | [`config/queue.ts`](https://github.com/intentjs/new-app-starter/blob/main/config/queue.ts) |
@@ -96,4 +91,4 @@ Following namespaces are reserved for IntentJS.
 
 This section mentions some of the best practices when it comes to managing and accessing configurations in your applications.
 
-✅ We recommend keeping the usage of `process.env` limited to the `config` directory only. You can then read the values from the IntentConfig class. Another reason of doing this is that reading process.env will be a little slow as compared to reading the value from `ConfigService` class.
+- We recommend keeping the usage of `process.env` limited to the `config` directory only.
