@@ -16,7 +16,7 @@ When using IntentJS, you only need to register a single cron job on your server 
 
 ## Defining Schedules
 
-Intent offers you the flexibility of defining the schedules anywhere in your `app` directory. To get started, let's take a look at an example. In this example, we will schedule a callback to be called every day at 1PM. Within this callback, we will execute a database query to get count of all users.
+The schedules are defined in the `ServiceProvider#schedules` class, present inside the `app/boot/sp` directory To get started, let's take a look at an example. In this example, we will schedule a callback to be called every day at 1PM. Within this callback, we will execute a database query to get count of all users.
 
 ```ts
 import { Schedule } from '@intentjs/core/schedule';
