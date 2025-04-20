@@ -33,6 +33,12 @@ In addition to scheduling using callback, you may also schedule an `Injectable` 
 Schedule.call(ClearAbandonedCarts).daily().run();
 ```
 
+If you would like to see the list of all registered schedules, you can use the `schedule:list` command.
+
+```bash
+node intent schedule:list
+```
+
 ### Intent Commands
 
 In addition to scheduling callbacks, you can also schedule [Intent Commands](./console.md) and system commands. For example, you may use the `command` method to schedule an Intent command.
@@ -257,10 +263,40 @@ Schedule.command('email:send')
 
 ## Running the Scheduler
 
-Schedulers by default run in your application's main thread, so whenever you call the `run` method, your scheduled tasks get started immediately. 
+There are two ways you can run your scheduled tasks, in your main application's thread, or else in a separate thread. By default, the tasks run in the main thread, if you would like to change this behaviour you can change the `runInAnotherThread` flag in `config/app.ts` file.
 
-But if you are running your application on the main thread, you may want to limit a scheduled job to only be 
-executed on a single server. To do this, you can make use of the `schedule:work` command.
+```ts
+/**
+ * -----------------------------------------------------
+ * Scheduler Configuration
+ * -----------------------------------------------------
+ *
+ * This property defines the configuration for the scheduler.
+ */
+schedules: {
+  /**
+   * -----------------------------------------------------
+   * Run in another thread
+   * -----------------------------------------------------
+   *
+   * This property defines whether the scheduler 
+   * should run in another thread.
+   */
+  runInAnotherThread: true,
+
+  /**
+   * -----------------------------------------------------
+   * Timezone
+   * -----------------------------------------------------
+   *
+   * This property defines the timezone for the scheduler.
+   */
+  timezone: "Asia/Kolkata",
+}
+```
+
+Now, to start your schedules in a separate thread, you can run the `schedule:work` command. This approach is beneficial if you are running your application on multiple servers, then you would want to limit your scheduled jobs to only be executed on a single server.
+
 
 ```bash
 node intent schedule:work
