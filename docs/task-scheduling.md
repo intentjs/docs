@@ -33,12 +33,6 @@ In addition to scheduling using callback, you may also schedule an `Injectable` 
 Schedule.call(ClearAbandonedCarts).daily().run();
 ```
 
-If you would like to view an overview of your scheduled tasks and the next time they are scheduled to run, you may use the `schedule:list` intent command.
-
-```bash
-node intent schedule:list
-```
-
 ### Intent Commands
 
 In addition to scheduling callbacks, you can also schedule [Intent Commands](./console.md) and system commands. For example, you may use the `command` method to schedule an Intent command.
