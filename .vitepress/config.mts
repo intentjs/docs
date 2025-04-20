@@ -27,6 +27,15 @@ export default defineConfig({
   rewrites: {
     "/": "/installation",
   },
+  markdown: {
+    theme: {
+      light: "catppuccin-latte",
+      dark: "catppuccin-mocha",
+    },
+  },
+  // markdown: {
+  //   theme: "night-owl",
+  // },
   themeConfig: {
     siteTitle: "IntentJS",
     logo: {
@@ -113,6 +122,7 @@ export default defineConfig({
           { text: "Localization", link: "/localization" },
           { text: "Logging", link: "/logging" },
           { text: "Mailers", link: "/mailers" },
+          { text: "Task Scheduling", link: "/task-scheduling" },
           { text: "Queues", link: "/queues" },
         ],
       },
