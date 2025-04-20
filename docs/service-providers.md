@@ -119,6 +119,25 @@ export class AppServiceProvider extends ServiceProvider {
 }
 ```
 
+### The `schedules` method
+
+You may use the `schedules` method to register your [Scheduled Tasks](./task-scheduling.md). The method accepts an argument of `ModuleRef` class which gives you access to all of the `Injectable` classes. Let's take a look at a simple example of a simple schedule.
+
+```ts
+  /**
+   * Define the schedules for the application.
+   *
+   * @param ref - The module reference.
+   */
+  async schedules(ref: ModuleRef): Promise<void> {
+    Schedule.call(() => {
+      console.log("Hello, world!");
+    })
+      .everyTwoSeconds()
+      .run();
+  }
+```
+
 ## Register Service Providers
 
 After creating service providers, we will now need to register it inside an app container. To do so, you can simply call the 
